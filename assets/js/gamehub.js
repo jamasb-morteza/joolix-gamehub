@@ -15,7 +15,7 @@
 
     async function loadData() {
         try {
-            const res = await fetch('./gamehub.json');
+            const res = await fetch('/gamehub/gamehub.json');
             if (!res.ok) throw new Error('not found');
             const data = await res.json();
             return data;

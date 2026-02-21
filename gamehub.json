@@ -6,7 +6,7 @@
       "slug": "neon-runner",
       "descriptions": "Dive into a chaotic underworld dungeon adventure with rogue-like mechanics, bullets everywhere, and permadeath that never gets old.",
       "motivation": "Dive into a chaotic underworld dungeon adventure with rogue-like mechanics, bullets everywhere, and permadeath that never gets old.",
-      "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&q=80",
+      "image": "./games/neon-runner/assets/images/lightbox2.png",
       "tags": [
         "Action",
         "Roguelike",

@@ -2,110 +2,194 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>JOOLIX Neon Runner</title>
-    <link href="./assets/fonts/cinzel/cinzel.css" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/css/neon_joolix_runner.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emerald Elite | Neon Runner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --emerald: #10b981; }
+        body {
+            background: radial-gradient(circle at top right, #064e3b 0%, #01110d 100%);
+            background-attachment: fixed;
+            font-family: 'Montserrat', sans-serif;
+            color: #ecfdf5;
+        }
+        .luxury-font {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 4px;
+        }
+        .glass {
+            background: rgba(2, 44, 34, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.15);
+            box-shadow: 0 0 26px rgba(16, 185, 129, 0.14);
+        }
+        .shiny-metal {
+            background: linear-gradient(135deg, #064e3b 0%, #10b981 50%, #064e3b 100%);
+            background-size: 200% auto;
+            transition: background-position 0.5s ease, box-shadow 0.5s ease;
+        }
+        .shiny-metal:hover {
+            background-position: right;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.35);
+        }
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            border-radius: 9999px;
+            height: 10px;
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 9999px;
+            background: #10b981;
+            box-shadow: 0 0 14px rgba(16, 185, 129, 0.75);
+            border: 1px solid rgba(2, 44, 34, 0.9);
+            cursor: pointer;
+        }
+        #toast-container {
+            position: fixed;
+            z-index: 80;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 20px;
+            pointer-events: none;
+        }
+        @media (max-width: 767px) {
+            #toast-container { bottom: 0; left: 0; right: 0; align-items: center; }
+            .toast-item { width: 100%; max-width: 90vw; }
+        }
+        @media (min-width: 768px) {
+            #toast-container { top: 20px; right: 20px; align-items: flex-end; }
+            .toast-item { min-width: 320px; }
+        }
+        .neon_joolix_runner_overlay { display: none; }
+        .neon_joolix_runner_overlay.neon_joolix_runner_overlay--active { display: flex; }
+    </style>
 </head>
-<body>
-<div dir="ltr" style="direction: ltr">
-    <div class="neon_joolix_runner_game-container">
-        <header class="neon_joolix_runner_header">
-            <a href="https://joolio.me" target="_blank" class="neon_joolix_runner_brand-badge">
-                <img src="./../../assets/images/branding/joolix_dark.webp" alt="JOOLIO"
-                     class="neon_joolix_runner_brand-logo-img">
-            </a>
-            <h1 class="neon_joolix_runner_title">NEON JOOLIX RUNNER</h1>
-        </header>
-
-        <div class="neon_joolix_runner_canvas-wrapper">
-            <canvas id="neon_joolix_runner_canvas" class="neon_joolix_runner_game-canvas" width="800" height="300"></canvas>
-            <div class="neon_joolix_runner_score-display">SCORE: <span id="neon_joolix_runner_score">0</span></div>
-            <div class="neon_joolix_runner_high-score">BEST: <span id="neon_joolix_runner_highScore">0</span></div>
-
-            <div id="neon_joolix_runner_startOverlay" class="neon_joolix_runner_overlay">
-                <img src="./assets/images/joolix_runner_npc.webp" alt="JOOLIX"
-                     class="neon_joolix_runner_overlay-character">
-                <div class="neon_joolix_runner_overlay-title">READY?</div>
-                <div class="neon_joolix_runner_overlay-subtitle">Press SPACE or tap to start</div>
-            </div>
-
-            <div id="neon_joolix_runner_gameOverOverlay" class="neon_joolix_runner_overlay">
-                <img src="./assets/images/joolix_runner_npc.webp" alt="Joolix"
-                     class="neon_joolix_runner_overlay-character"
-                     style="filter: drop-shadow(0 0 20px #ff6b35) drop-shadow(0 0 40px #ff00ff); opacity: 0.7;">
-                <div class="neon_joolix_runner_overlay-title">GAME OVER</div>
-                <div id="neon_joolix_runner_finalScore" class="neon_joolix_runner_final-score">0</div>
-                <div class="neon_joolix_runner_overlay-subtitle">Press SPACE or tap to restart</div>
-            </div>
-
-            <div id="neon_joolix_runner_pauseOverlay" class="neon_joolix_runner_overlay">
-                <img src="./assets/images/joolix_runner_npc.webp" alt="Joolix"
-                     class="neon_joolix_runner_overlay-character"
-                     style="filter: drop-shadow(0 0 20px #ffd700) drop-shadow(0 0 40px #39ff14);">
-                <div class="neon_joolix_runner_overlay-title">PAUSED</div>
-                <div class="neon_joolix_runner_overlay-subtitle">Press P or tap to resume</div>
-            </div>
-        </div>
-
-        <div class="neon_joolix_runner_controls">
-            <button id="neon_joolix_runner_startBtn" class="neon_joolix_runner_btn">Start</button>
-            <button id="neon_joolix_runner_pauseBtn" class="neon_joolix_runner_btn neon_joolix_runner_btn--pause">Pause
-            </button>
-            <button id="neon_joolix_runner_restartBtn" class="neon_joolix_runner_btn neon_joolix_runner_btn--restart">
-                Restart
-            </button>
-        </div>
-
-        <div class="neon_joolix_runner_settings-panel">
-            <div class="neon_joolix_runner_settings-title">Game Settings</div>
-            <div class="neon_joolix_runner_settings-grid">
-                <div class="neon_joolix_runner_setting-item">
-                    <label class="neon_joolix_runner_setting-label">Gravity</label>
-                    <input type="range" id="neon_joolix_runner_gravitySlider" class="neon_joolix_runner_range-input"
-                           min="0.4" max="1.2" step="0.05" value="0.6">
-                    <span id="neon_joolix_runner_gravityValue" class="neon_joolix_runner_setting-value">0.6</span>
-                </div>
-                <div class="neon_joolix_runner_setting-item">
-                    <label class="neon_joolix_runner_setting-label">Speed Increment</label>
-                    <input type="range" id="neon_joolix_runner_speedSlider" class="neon_joolix_runner_range-input"
-                           min="0.001" max="0.01" step="0.001" value="0.004">
-                    <span id="neon_joolix_runner_speedValue" class="neon_joolix_runner_setting-value">0.004</span>
-                </div>
-                <div class="neon_joolix_runner_setting-item">
-                    <label class="neon_joolix_runner_setting-label">Obstacle Frequency</label>
-                    <input type="range" id="neon_joolix_runner_obstacleSlider" class="neon_joolix_runner_range-input"
-                           min="800" max="2500" step="100" value="1500">
-                    <span id="neon_joolix_runner_obstacleValue" class="neon_joolix_runner_setting-value">1500ms</span>
-                </div>
-                <div class="neon_joolix_runner_setting-item">
-                    <label class="neon_joolix_runner_setting-label">Initial Speed</label>
-                    <input type="range" id="neon_joolix_runner_initSpeedSlider" class="neon_joolix_runner_range-input"
-                           min="4" max="10" step="0.5" value="6">
-                    <span id="neon_joolix_runner_initSpeedValue" class="neon_joolix_runner_setting-value">6</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="neon_joolix_runner_instructions">
-            <p class="neon_joolix_runner_instructions-text"><span class="neon_joolix_runner_key">SPACE</span> or <span
-                    class="neon_joolix_runner_key">UP</span> to Jump</p>
-            <p class="neon_joolix_runner_instructions-text"><span class="neon_joolix_runner_key">DOWN</span> to Duck</p>
-            <p class="neon_joolix_runner_instructions-text"><span class="neon_joolix_runner_key">P</span> to
-                Pause/Resume
-            </p>
-        </div>
+<body class="min-h-screen p-3 md:p-6 tracking-tight">
+<div id="toast-container">
+    <div class="toast-item glass rounded-2xl px-4 py-3 flex items-center gap-3 pointer-events-auto border-l-4 border-emerald-500/80">
+        <i data-lucide="shield-check" class="text-emerald-400 w-4 h-4"></i>
+        <span class="text-[10px] uppercase tracking-[0.3em] font-semibold">Emerald Elite Link Secured</span>
     </div>
-
-    <button id="neon_joolix_runner_touchJump" class="neon_joolix_runner_touch-jump">JUMP</button>
-
-    <footer class="neon_joolix_runner_footer-credit">
-        <span class="neon_joolix_runner_footer-text">Crafted with</span>
-        <span class="neon_joolix_runner_heart">♥</span>
-        <span class="neon_joolix_runner_footer-text">by</span>
-        <a href="https://joolio.me" target="_blank" class="neon_joolix_runner_footer-link">JOOLIO</a>
-    </footer>
-
 </div>
+
+<div dir="ltr" class="max-w-[1500px] mx-auto grid grid-cols-1 xl:grid-cols-12 gap-6">
+    <aside class="xl:col-span-3 space-y-6" data-aos="fade-right">
+        <section class="glass rounded-[2.5rem] p-7 text-center">
+            <a href="https://joolio.me" target="_blank" class="inline-flex items-center justify-center mb-4">
+                <img src="./../../assets/images/branding/joolix_dark.webp" alt="JOOLIX" class="w-28">
+            </a>
+            <h1 class="luxury-font text-sm md:text-base text-emerald-300">EMERALD ELITE</h1>
+            <p class="text-[10px] uppercase tracking-[0.25em] text-emerald-500/80 mt-2">Neon Runner Terminal</p>
+        </section>
+
+        <section class="glass rounded-[2.5rem] p-4 space-y-2 text-[11px] uppercase tracking-[0.22em] font-semibold">
+            <div class="rounded-2xl px-4 py-3 bg-emerald-500/10 border border-emerald-500/30 flex items-center gap-3 text-emerald-300">
+                <i data-lucide="cpu" class="w-4 h-4"></i><span>Runtime Core Active</span>
+            </div>
+            <div class="rounded-2xl px-4 py-3 border border-emerald-500/15 flex items-center gap-3 text-emerald-500/80">
+                <i data-lucide="activity" class="w-4 h-4"></i><span>Quantum Input Ready</span>
+            </div>
+        </section>
+    </aside>
+
+    <main class="xl:col-span-9 space-y-6" data-aos="zoom-in">
+        <section class="glass rounded-[3rem] p-4 md:p-7">
+            <div class="flex flex-wrap gap-3 justify-between items-center mb-4">
+                <h2 class="luxury-font text-emerald-300 text-lg">NEON JOOLIX RUNNER</h2>
+                <div class="flex items-center gap-2 text-[10px] uppercase tracking-[0.24em]">
+                    <span class="px-3 py-1 rounded-2xl bg-black/50 border border-emerald-500/30">Score <span id="neon_joolix_runner_score">0</span></span>
+                    <span class="px-3 py-1 rounded-2xl bg-black/50 border border-emerald-500/30">Best <span id="neon_joolix_runner_highScore">0</span></span>
+                </div>
+            </div>
+
+            <div class="relative glass rounded-[2.5rem] p-3">
+                <canvas id="neon_joolix_runner_canvas" class="w-full rounded-[2rem] border border-emerald-500/20 bg-black/40" width="800" height="300"></canvas>
+
+                <div id="neon_joolix_runner_startOverlay" class="neon_joolix_runner_overlay absolute inset-3 rounded-[2rem] bg-black/40 backdrop-blur-xl items-center justify-center flex-col text-center px-4">
+                    <img src="./assets/images/joolix_runner_npc.webp" alt="JOOLIX" class="w-24 mb-4 drop-shadow-[0_0_24px_rgba(16,185,129,0.75)]">
+                    <div class="luxury-font text-emerald-300 text-xl">READY?</div>
+                    <div class="text-xs tracking-[0.22em] uppercase text-emerald-500/85 mt-2">Press SPACE or tap to start</div>
+                </div>
+
+                <div id="neon_joolix_runner_gameOverOverlay" class="neon_joolix_runner_overlay absolute inset-3 rounded-[2rem] bg-black/40 backdrop-blur-xl items-center justify-center flex-col text-center px-4">
+                    <img src="./assets/images/joolix_runner_npc.webp" alt="Joolix" class="w-24 mb-4 opacity-80" style="filter: drop-shadow(0 0 20px #10b981) drop-shadow(0 0 40px #10b981);">
+                    <div class="luxury-font text-emerald-300 text-xl">GAME OVER</div>
+                    <div id="neon_joolix_runner_finalScore" class="text-3xl font-bold text-emerald-400 my-2">0</div>
+                    <div class="text-xs tracking-[0.22em] uppercase text-emerald-500/85">Press SPACE or tap to restart</div>
+                </div>
+
+                <div id="neon_joolix_runner_pauseOverlay" class="neon_joolix_runner_overlay absolute inset-3 rounded-[2rem] bg-black/40 backdrop-blur-xl items-center justify-center flex-col text-center px-4">
+                    <img src="./assets/images/joolix_runner_npc.webp" alt="Joolix" class="w-24 mb-4" style="filter: drop-shadow(0 0 20px #10b981) drop-shadow(0 0 40px #10b981);">
+                    <div class="luxury-font text-emerald-300 text-xl">PAUSED</div>
+                    <div class="text-xs tracking-[0.22em] uppercase text-emerald-500/85 mt-2">Press P or tap to resume</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            <div class="md:col-span-6 glass rounded-[2.5rem] p-5">
+                <h3 class="luxury-font text-emerald-300 text-sm mb-4">Command Controls</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <button id="neon_joolix_runner_startBtn" class="shiny-metal rounded-2xl py-3 text-[11px] uppercase tracking-[0.2em] font-bold">Start</button>
+                    <button id="neon_joolix_runner_pauseBtn" class="shiny-metal rounded-2xl py-3 text-[11px] uppercase tracking-[0.2em] font-bold">Pause</button>
+                    <button id="neon_joolix_runner_restartBtn" class="shiny-metal rounded-2xl py-3 text-[11px] uppercase tracking-[0.2em] font-bold">Restart</button>
+                </div>
+                <div class="mt-4 space-y-2 text-[11px] text-emerald-200/90 uppercase tracking-[0.18em]">
+                    <p><span class="text-emerald-400">SPACE / UP</span> Jump</p>
+                    <p><span class="text-emerald-400">DOWN</span> Duck</p>
+                    <p><span class="text-emerald-400">P</span> Pause/Resume</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-6 glass rounded-[2.5rem] p-5">
+                <h3 class="luxury-font text-emerald-300 text-sm mb-4">Performance Tuning</h3>
+                <div class="space-y-4 text-[11px] uppercase tracking-[0.18em]">
+                    <label class="block">Gravity
+                        <input type="range" id="neon_joolix_runner_gravitySlider" class="w-full mt-2 bg-black/50" min="0.4" max="1.2" step="0.05" value="0.6">
+                        <span id="neon_joolix_runner_gravityValue" class="text-emerald-400">0.6</span>
+                    </label>
+                    <label class="block">Speed Increment
+                        <input type="range" id="neon_joolix_runner_speedSlider" class="w-full mt-2 bg-black/50" min="0.001" max="0.01" step="0.001" value="0.004">
+                        <span id="neon_joolix_runner_speedValue" class="text-emerald-400">0.004</span>
+                    </label>
+                    <label class="block">Obstacle Frequency
+                        <input type="range" id="neon_joolix_runner_obstacleSlider" class="w-full mt-2 bg-black/50" min="800" max="2500" step="100" value="1500">
+                        <span id="neon_joolix_runner_obstacleValue" class="text-emerald-400">1500ms</span>
+                    </label>
+                    <label class="block">Initial Speed
+                        <input type="range" id="neon_joolix_runner_initSpeedSlider" class="w-full mt-2 bg-black/50" min="4" max="10" step="0.5" value="6">
+                        <span id="neon_joolix_runner_initSpeedValue" class="text-emerald-400">6</span>
+                    </label>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<button id="neon_joolix_runner_touchJump" class="fixed bottom-4 left-1/2 -translate-x-1/2 md:left-auto md:right-6 md:translate-x-0 shiny-metal rounded-2xl px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] border border-emerald-300/30">Jump</button>
+
+<footer class="text-center mt-8 mb-3 text-[10px] uppercase tracking-[0.25em] text-emerald-500/80">
+    Crafted with <span class="text-emerald-400">♥</span> by <a href="https://joolio.me" target="_blank" class="text-emerald-300 hover:text-emerald-400">JOOLIO</a>
+</footer>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init({ once: true, duration: 650 });
+    lucide.createIcons();
+</script>
 <script src="./assets/js/neon_joolix_runner.js"></script>
 </body>
 </html>

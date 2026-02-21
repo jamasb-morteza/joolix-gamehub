@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>JOOLIX</title>
+    <style>
+        @font-face {
+            font-family: 'Joolix';
+            src: url('assets/fonts/joolix.woff2') format('woff2');
+            font-weight: 100 900;
+            font-style: normal;
+            font-display: swap;
+        }
+    </style>
+    <link rel="stylesheet" href="/assets/css/gamehub.css">
+</head>
+<body>
+
+<!-- Ambient glow blobs -->
+<div class="ambient ambient-1"></div>
+<div class="ambient ambient-2"></div>
+<div class="ambient ambient-3"></div>
+
+<!-- Loading screen -->
+<div id="loading">
+    <div class="spinner"></div>
+    <div class="loading-text">Initializing JOOLIX GameHub…</div>
+</div>
+
+<!-- Error screen -->
+<div id="error-msg"
+     style="display:none; flex-direction:column; align-items:center; justify-content:center; gap:16px; position:fixed; inset:0; background:var(--bg); z-index:1000;">
+    <div class="err-title">⚠ SIGNAL LOST</div>
+    <div class="err-sub">Could not load <code>gamehub.json</code>. Make sure the file is in the same directory.</div>
+</div>
+
+<!-- Header -->
+
+
+<header id="header" style="display:none;">
+	
+    <span id="hub-badge" style="display:none">
+			
+		</span>
+    <h1 id="hub-title">JOOLIX</h1>
+    <p class="subtitle">Discover your next adventure</p>
+    <div class="hline"></div>
+</header>
+
+<!-- Main content -->
+<main id="main-content" style="display:none;">
+
+    <!-- Filter bar -->
+    <div class="filter-bar">
+        <span class="filter-label">Filter</span>
+        <button class="tag-btn all-btn active" data-tag="all">All Games</button>
+        <!-- dynamic tag buttons injected here -->
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-row">
+        Showing <strong id="count">0</strong>&nbsp;games
+    </div>
+
+    <!-- Grid -->
+    <div class="game-grid" id="game-grid"></div>
+</main>
+
+<footer id="footer" style="display:none;">
+    <span id="footer-text">JOOLIX ◆ GAMEHUB</span>
+</footer>
+
+<script src="assets/js/gamehub.js">
+
+</script>
+</body>
+</html>

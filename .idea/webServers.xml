@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="ca002a25-1dd6-41a0-bd81-24859ce51075" name="Services | 50.41">
+        <fileTransfer rootFolder="/var/www/gamehub" accessType="SFTP" host="192.168.50.41" port="2022" sshConfigId="3baf088d-aaf3-4acc-98ca-3bb061982335" sshConfig="Services | 50.41">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

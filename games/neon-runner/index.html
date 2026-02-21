@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JOOLIX Neon Runner</title>
+    <link href="/games/neon-runner/assets/fonts/cinzel/cinzel.css" rel="stylesheet">
+    <link rel="stylesheet" href="/games/neon-runner/assets/css/neon_joolix_runner.css">
+</head>
+<body>
+<div dir="ltr" style="direction: ltr">
+    <div class="neon_joolix_runner_game-container">
+        <header class="neon_joolix_runner_header">
+            <a href="https://joolio.me" target="_blank" class="neon_joolix_runner_brand-badge">
+                <img src="/assets/images/branding/joolix_dark.webp" alt="JOOLIO"
+                     class="neon_joolix_runner_brand-logo-img">
+            </a>
+            <h1 class="neon_joolix_runner_title">NEON JOOLIX RUNNER</h1>
+        </header>~
+
+        <div class="neon_joolix_runner_canvas-wrapper">
+            <canvas id="neon_joolix_runner_canvas" class="neon_joolix_runner_game-canvas" width="800" height="300"></canvas>
+            <div class="neon_joolix_runner_score-display">SCORE: <span id="neon_joolix_runner_score">0</span></div>
+            <div class="neon_joolix_runner_high-score">BEST: <span id="neon_joolix_runner_highScore">0</span></div>
+
+            <div id="neon_joolix_runner_startOverlay" class="neon_joolix_runner_overlay">
+                <img src="/games/neon-runner/assets/images/joolix_runner_npc.webp" alt="Joolix"
+                     class="neon_joolix_runner_overlay-character">
+                <div class="neon_joolix_runner_overlay-title">READY?</div>
+                <div class="neon_joolix_runner_overlay-subtitle">Press SPACE or tap to start</div>
+            </div>
+
+            <div id="neon_joolix_runner_gameOverOverlay" class="neon_joolix_runner_overlay">
+                <img src="/games/neon-runner/assets/images/joolix_runner_npc.webp" alt="Joolix"
+                     class="neon_joolix_runner_overlay-character"
+                     style="filter: drop-shadow(0 0 20px #ff6b35) drop-shadow(0 0 40px #ff00ff); opacity: 0.7;">
+                <div class="neon_joolix_runner_overlay-title">GAME OVER</div>
+                <div id="neon_joolix_runner_finalScore" class="neon_joolix_runner_final-score">0</div>
+                <div class="neon_joolix_runner_overlay-subtitle">Press SPACE or tap to restart</div>
+            </div>
+
+            <div id="neon_joolix_runner_pauseOverlay" class="neon_joolix_runner_overlay">
+                <img src="/games/neon-runner/assets/images/joolix_runner_npc.webp" alt="Joolix"
+                     class="neon_joolix_runner_overlay-character"
+                     style="filter: drop-shadow(0 0 20px #ffd700) drop-shadow(0 0 40px #39ff14);">
+                <div class="neon_joolix_runner_overlay-title">PAUSED</div>
+                <div class="neon_joolix_runner_overlay-subtitle">Press P or tap to resume</div>
+            </div>
+        </div>
+
+        <div class="neon_joolix_runner_controls">
+            <button id="neon_joolix_runner_startBtn" class="neon_joolix_runner_btn">Start</button>
+            <button id="neon_joolix_runner_pauseBtn" class="neon_joolix_runner_btn neon_joolix_runner_btn--pause">Pause
+            </button>
+            <button id="neon_joolix_runner_restartBtn" class="neon_joolix_runner_btn neon_joolix_runner_btn--restart">
+                Restart
+            </button>
+        </div>
+
+        <div class="neon_joolix_runner_settings-panel">
+            <div class="neon_joolix_runner_settings-title">Game Settings</div>
+            <div class="neon_joolix_runner_settings-grid">
+                <div class="neon_joolix_runner_setting-item">
+                    <label class="neon_joolix_runner_setting-label">Gravity</label>
+                    <input type="range" id="neon_joolix_runner_gravitySlider" class="neon_joolix_runner_range-input"
+                           min="0.4" max="1.2" step="0.05" value="0.6">
+                    <span id="neon_joolix_runner_gravityValue" class="neon_joolix_runner_setting-value">0.6</span>
+                </div>
+                <div class="neon_joolix_runner_setting-item">
+                    <label class="neon_joolix_runner_setting-label">Speed Increment</label>
+                    <input type="range" id="neon_joolix_runner_speedSlider" class="neon_joolix_runner_range-input"
+                           min="0.001" max="0.01" step="0.001" value="0.004">
+                    <span id="neon_joolix_runner_speedValue" class="neon_joolix_runner_setting-value">0.004</span>
+                </div>
+                <div class="neon_joolix_runner_setting-item">
+                    <label class="neon_joolix_runner_setting-label">Obstacle Frequency</label>
+                    <input type="range" id="neon_joolix_runner_obstacleSlider" class="neon_joolix_runner_range-input"
+                           min="800" max="2500" step="100" value="1500">
+                    <span id="neon_joolix_runner_obstacleValue" class="neon_joolix_runner_setting-value">1500ms</span>
+                </div>
+                <div class="neon_joolix_runner_setting-item">
+                    <label class="neon_joolix_runner_setting-label">Initial Speed</label>
+                    <input type="range" id="neon_joolix_runner_initSpeedSlider" class="neon_joolix_runner_range-input"
+                           min="4" max="10" step="0.5" value="6">
+                    <span id="neon_joolix_runner_initSpeedValue" class="neon_joolix_runner_setting-value">6</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="neon_joolix_runner_instructions">
+            <p class="neon_joolix_runner_instructions-text"><span class="neon_joolix_runner_key">SPACE</span> or <span
+                    class="neon_joolix_runner_key">UP</span> to Jump</p>
+            <p class="neon_joolix_runner_instructions-text"><span class="neon_joolix_runner_key">DOWN</span> to Duck</p>
+            <p class="neon_joolix_runner_instructions-text"><span class="neon_joolix_runner_key">P</span> to Pause/Resume
+            </p>
+        </div>
+    </div>
+
+    <button id="neon_joolix_runner_touchJump" class="neon_joolix_runner_touch-jump">JUMP</button>
+
+    <footer class="neon_joolix_runner_footer-credit">
+        <span class="neon_joolix_runner_footer-text">Crafted with</span>
+        <span class="neon_joolix_runner_heart">♥</span>
+        <span class="neon_joolix_runner_footer-text">by</span>
+        <a href="https://joolio.me" target="_blank" class="neon_joolix_runner_footer-link">JOOLIO</a>
+    </footer>
+
+</div>
+<script src="assets/js/neon_joolix_runner.js"></script>
+</body>
+</html>

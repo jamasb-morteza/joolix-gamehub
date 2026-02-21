@@ -52,6 +52,7 @@
 
         games.forEach((game, i) => {
             const card = document.createElement('div');
+            const slug = typeof game.slug !=='undefined'?game.slug:null;
             card.className = 'game-card';
             card.style.animationDelay = `${i * 60}ms`;
 
@@ -63,8 +64,11 @@
 
             card.innerHTML = `
           <div class="card-thumb-wrap">
+            <a href="./games/${slug}">
             <img class="card-thumb" src="${imgSrc}" alt="${game.title}" loading="lazy"
               onerror="this.src='https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&q=80'" />
+            </a>
+            <a href="./games/${slug}">
             <div class="card-play">
               <div class="play-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="#080b12">
@@ -72,6 +76,7 @@
                 </svg>
               </div>
             </div>
+            </a>
           </div>
           <div class="card-body">
             <div class="card-title">${game.title}</div>

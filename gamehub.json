@@ -1,5 +1,9 @@
 {
   "title": "JOOLIX Gamehub",
+  "tags":[{
+    "x":"red",
+    "y":"yellow"
+  }],
   "games": [
     {
       "id": "a5917169-6bef-4db8-a35d-a1a2b9072f8f",

@@ -66,7 +66,7 @@
           <div class="card-thumb-wrap">
             <img class="card-thumb" src="${imgSrc}" alt="${game.title}" loading="lazy"
               onerror="this.src='https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&q=80'" />
-            <a href="./games/${slug}">
+            <a href="./games/${slug}" class="game-anchor-link">
                 <div class="card-play">
                   <div class="play-icon">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="#080b12">

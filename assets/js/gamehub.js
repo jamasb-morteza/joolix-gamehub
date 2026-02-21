@@ -1,16 +1,72 @@
 (async () => {
-    const TAG_COLORS = ['c-tag-cyan', 'c-tag-purple', 'c-tag-pink', 'c-tag-yellow'];
+    const TAG_COLORS = ['#00f5d4', '#b08dff', '#ff2d6b', '#f5c518'];
+    const NEON_CORE_OVERRIDES = {
+        '#b08dff': '#7b2fff'
+    };
     let allGames = [];
     let activeTag = 'all';
     let tagColorMap = {};
+    let tagColorStyles = {};
     let tagColorIndex = 0;
+    let tagsConfigMap = {};
+
+    function normalizeHex(hex) {
+        if (!hex || typeof hex !== 'string') return null;
+        const value = hex.trim();
+        const m = value.match(/^#([\da-f]{3}|[\da-f]{6})$/i);
+        if (!m) return null;
+        const raw = m[1];
+        if (raw.length === 3) {
+            return `#${raw.split('').map(ch => ch + ch).join('').toLowerCase()}`;
+        }
+        return `#${raw.toLowerCase()}`;
+    }
+
+    function hexToRgb(hex) {
+        const normalized = normalizeHex(hex);
+        if (!normalized) return null;
+        return {
+            r: parseInt(normalized.slice(1, 3), 16),
+            g: parseInt(normalized.slice(3, 5), 16),
+            b: parseInt(normalized.slice(5, 7), 16)
+        };
+    }
+
+    function neonizeColor(baseColor) {
+        const normalized = normalizeHex(baseColor);
+        if (!normalized) {
+            return {
+                color: '#00f5d4',
+                borderColor: 'rgba(0,245,212,0.35)',
+                background: 'rgba(0,245,212,0.07)'
+            };
+        }
+
+        const neonCore = NEON_CORE_OVERRIDES[normalized] || normalized;
+        const rgb = hexToRgb(neonCore);
+
+        return {
+            color: normalized,
+            borderColor: `rgba(${rgb.r},${rgb.g},${rgb.b},0.35)`,
+            background: `rgba(${rgb.r},${rgb.g},${rgb.b},0.07)`
+        };
+    }
 
     function getTagColor(tag) {
         if (!tagColorMap[tag]) {
-            tagColorMap[tag] = TAG_COLORS[tagColorIndex % TAG_COLORS.length];
+            const configColor = tagsConfigMap[tag];
+            const fallbackColor = TAG_COLORS[tagColorIndex % TAG_COLORS.length];
+            tagColorMap[tag] = configColor || fallbackColor;
             tagColorIndex++;
         }
         return tagColorMap[tag];
+    }
+
+    function getTagColorStyle(tag) {
+        if (!tagColorStyles[tag]) {
+            tagColorStyles[tag] = neonizeColor(getTagColor(tag));
+        }
+        return tagColorStyles[tag];
     }
 
     async function loadData() {
@@ -56,9 +112,11 @@
             card.className = 'game-card';
             card.style.animationDelay = `${i * 60}ms`;
 
-            const tags = (game.tags || []).map(tag =>
-                `<span class="ctag ${getTagColor(tag)}" data-tag="${tag}">${tag}</span>`
-            ).join('');
+            const tags = (game.tags || []).map(tag => {
+                const neon = getTagColorStyle(tag);
+                const style = `color:${neon.color};border-color:${neon.borderColor};background:${neon.background};`;
+                return `<span class="ctag" style="${style}" data-tag="${tag}">${tag}</span>`;
+            }).join('');
 
             const imgSrc = game.image || `https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&q=80`;
 
@@ -121,6 +179,14 @@
     try {
         const data = await loadData();
         allGames = data.games || [];
+        tagsConfigMap = (data.tags || []).reduce((acc, tag) => {
+            const title = (tag && tag.title || '').trim();
+            const color = normalizeHex(tag && tag.color);
+            if (title) {
+                acc[title] = color;
+            }
+            return acc;
+        }, {});
 
         // Set title
         if (data.title) {

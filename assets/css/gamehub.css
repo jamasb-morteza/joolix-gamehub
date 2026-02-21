@@ -2,25 +2,25 @@
 
 
 :root {
-    --bg:         #080b12;
-    --bg2:        #0d1120;
-    --bg3:        #111827;
-    --neon:       #00f5d4;
-    --neon2:      #7b2fff;
-    --neon3:      #ff2d6b;
-    --gold:       #f5c518;
+    --bg-void:         #080b12;
+    --bg-deep-night:        #0d1120;
+    --bg-dark-slate:        #111827;
+    --neon-cyan:       #00f5d4;
+    --neon-purple:      #7b2fff;
+    --neon-pink:      #ff2d6b;
+    --neon-gold:       #f5c518;
     --text:       #c8d6e5;
     --text-dim:   #5a6a80;
     --card-bg:    #0f1623;
     --card-bdr:   #1e2d45;
-    --glow:       0 0 20px rgba(0,245,212,0.35), 0 0 60px rgba(0,245,212,0.12);
-    --glow2:      0 0 20px rgba(123,47,255,0.4), 0 0 60px rgba(123,47,255,0.15);
+    --glow-cyan:       0 0 20px rgba(0,245,212,0.35), 0 0 60px rgba(0,245,212,0.12);
+    --glow-purple:      0 0 20px rgba(123,47,255,0.4), 0 0 60px rgba(123,47,255,0.15);
 }
 
 html { scroll-behavior: smooth; }
 
 body {
-    background: var(--bg);
+    background: var(--bg-void);
     color: var(--text);
     font-family: 'Joolix', sans-serif;
     min-height: 100vh;
@@ -49,17 +49,17 @@ body::before {
 }
 .ambient-1 {
     width: 600px; height: 600px; top: -200px; left: -200px;
-    background: var(--neon2);
+    background: var(--neon-purple);
     animation: floatBlob 18s ease-in-out infinite alternate;
 }
 .ambient-2 {
     width: 500px; height: 500px; bottom: -150px; right: -150px;
-    background: var(--neon);
+    background: var(--neon-cyan);
     animation: floatBlob 22s ease-in-out infinite alternate-reverse;
 }
 .ambient-3 {
     width: 300px; height: 300px; top: 50%; left: 50%;
-    background: var(--neon3); opacity: 0.10;
+    background: var(--neon-pink); opacity: 0.10;
     animation: floatBlob 28s ease-in-out infinite alternate;
 }
 @keyframes floatBlob {
@@ -85,7 +85,7 @@ header {
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.22em;
-    color: var(--neon);
+    color: var(--neon-cyan);
     text-transform: uppercase;
 }
 
@@ -144,7 +144,7 @@ h1 {
     font-size: clamp(2.4rem, 6vw, 5rem);
     line-height: 1.05;
     letter-spacing: -0.02em;
-    background: linear-gradient(135deg, #fff 30%, var(--neon) 70%, var(--neon2) 100%);
+    background: linear-gradient(135deg, #fff 30%, var(--neon-cyan) 70%, var(--neon-purple) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -162,7 +162,7 @@ h1 {
 /* ── Divider ── */
 .hline {
     width: 100%; height: 1px;
-    background: linear-gradient(90deg, transparent, var(--neon2) 30%, var(--neon) 70%, transparent);
+    background: linear-gradient(90deg, transparent, var(--neon-purple) 30%, var(--neon-cyan) 70%, transparent);
     opacity: 0.3;
     margin-bottom: 40px;
 }
@@ -213,18 +213,18 @@ main {
     white-space: nowrap;
 }
 .tag-btn:hover {
-    border-color: var(--neon);
-    color: var(--neon);
+    border-color: var(--neon-cyan);
+    color: var(--neon-cyan);
     background: rgba(0,245,212,0.06);
 }
 .tag-btn.active {
-    border-color: var(--neon);
+    border-color: var(--neon-cyan);
     background: rgba(0,245,212,0.12);
-    color: var(--neon);
+    color: var(--neon-cyan);
     box-shadow: 0 0 12px rgba(0,245,212,0.2);
 }
 .tag-btn.all-btn.active {
-    border-color: var(--neon2);
+    border-color: var(--neon-purple);
     background: rgba(123,47,255,0.15);
     color: #b08dff;
     box-shadow: 0 0 12px rgba(123,47,255,0.25);
@@ -239,7 +239,7 @@ main {
     font-size: 0.82rem;
     color: var(--text-dim);
 }
-.stats-row strong { color: var(--neon); font-family: 'Joolix', monospace; font-size: 1rem; }
+.stats-row strong { color: var(--neon-cyan); font-family: 'Joolix', monospace; font-size: 1rem; }
 
 /* ── Grid ── */
 .game-grid {
@@ -266,7 +266,7 @@ main {
 .game-card:hover {
     transform: translateY(-6px) scale(1.015);
     border-color: rgba(0,245,212,0.35);
-    box-shadow: 0 12px 48px rgba(0,0,0,0.5), var(--glow);
+    box-shadow: 0 12px 48px rgba(0,0,0,0.5), var(--glow-cyan);
 }
 
 /* corner accent */
@@ -275,8 +275,8 @@ main {
     position: absolute;
     top: 0; right: 0;
     width: 50px; height: 50px;
-    border-top: 2px solid var(--neon);
-    border-right: 2px solid var(--neon);
+    border-top: 2px solid var(--neon-cyan);
+    border-right: 2px solid var(--neon-cyan);
     border-radius: 0 16px 0 0;
     opacity: 0;
     transition: opacity 0.3s;
@@ -326,7 +326,7 @@ main {
     background: rgba(0,245,212,0.9);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    box-shadow: var(--glow);
+    box-shadow: var(--glow-cyan);
     transform: scale(0.8);
     transition: transform 0.3s cubic-bezier(.22,1,.36,1);
 }
@@ -376,10 +376,10 @@ main {
     cursor: pointer;
 }
 /* cycle through colors by index mod */
-.ctag-0 { color: var(--neon);  border-color: rgba(0,245,212,0.35);  background: rgba(0,245,212,0.07); }
-.ctag-1 { color: #b08dff;      border-color: rgba(123,47,255,0.35); background: rgba(123,47,255,0.07); }
-.ctag-2 { color: var(--neon3); border-color: rgba(255,45,107,0.35); background: rgba(255,45,107,0.07); }
-.ctag-3 { color: var(--gold);  border-color: rgba(245,197,24,0.35); background: rgba(245,197,24,0.07); }
+.c-tag-cyan { color: var(--neon-cyan);  border-color: rgba(0,245,212,0.35);  background: rgba(0,245,212,0.07); }
+.c-tag-purple { color: #b08dff;      border-color: rgba(123,47,255,0.35); background: rgba(123,47,255,0.07); }
+.c-tag-pink { color: var(--neon-pink); border-color: rgba(255,45,107,0.35); background: rgba(255,45,107,0.07); }
+.c-tag-yellow { color: var(--neon-gold);  border-color: rgba(245,197,24,0.35); background: rgba(245,197,24,0.07); }
 
 .ctag:hover { filter: brightness(1.3); }
 
@@ -402,7 +402,7 @@ main {
 /* ── Loading ── */
 #loading {
     position: fixed; inset: 0;
-    background: var(--bg);
+    background: var(--bg-void);
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     gap: 24px;
     z-index: 1000;
@@ -411,7 +411,7 @@ main {
 .spinner {
     width: 48px; height: 48px;
     border: 3px solid rgba(0,245,212,0.1);
-    border-top-color: var(--neon);
+    border-top-color: var(--neon-cyan);
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
 }
@@ -428,7 +428,7 @@ main {
 #error-msg {
     display: none;
     position: fixed; inset: 0;
-    background: var(--bg);
+    background: var(--bg-void);
     flex-direction: column; align-items: center; justify-content: center;
     gap: 16px;
     z-index: 1000;
@@ -436,7 +436,7 @@ main {
 #error-msg .err-title {
     font-family: 'Joolix', monospace;
     font-size: 1.2rem;
-    color: var(--neon3);
+    color: var(--neon-pink);
 }
 #error-msg .err-sub {
     font-size: 0.85rem;

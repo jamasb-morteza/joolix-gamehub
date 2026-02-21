@@ -1,0 +1,100 @@
+/* Local Font Faces */
+@font-face {
+    font-family: 'Cinzel';
+    src: url('fonts/cinzel.ttf') format('truetype');
+    font-weight: bold;
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: url('fonts/montserrat.ttf') format('truetype');
+    font-weight: normal;
+}
+
+:root {
+    --emerald-primary: #10b981;
+    --dark-metal: #022c22;
+}
+
+.luxury-bg {
+    background: radial-gradient(circle at center, #064e3b 0%, #01110d 100%);
+    background-attachment: fixed;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.luxury-font { font-family: 'Cinzel', serif; }
+
+.glass {
+    background: rgba(2, 44, 34, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(16, 185, 129, 0.1);
+}
+
+.shiny-metal {
+    background: linear-gradient(135deg, #064e3b 0%, #10b981 50%, #064e3b 100%);
+    background-size: 200% auto;
+    transition: 0.5s;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.shiny-metal:hover {
+    background-position: right center;
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+}
+
+.logo-glow {
+    filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.5));
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border-radius: 15px;
+    transition: all 0.3s;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.sidebar-item.active {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--emerald-primary);
+    border-right: 2px solid var(--emerald-primary);
+}
+
+.dial-btn {
+    aspect-ratio: 1/1;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(16, 185, 129, 0.1);
+    border-radius: 1.25rem;
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.dial-btn:hover {
+    background: rgba(16, 185, 129, 0.2);
+    border-color: var(--emerald-primary);
+    color: white;
+}
+/* برای زیباسازی اسکرول‌بار در بخش Log ها */
+.scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.2);
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+    background: var(--emerald-primary);
+    border-radius: 10px;
+}
+
+/* انیمیشن لرزش ملایم برای دکمه‌های دیالپد در حالت فوکوس */
+.dial-btn:focus {
+    outline: none;
+    box-shadow: 0 0 15px var(--emerald-primary);
+}

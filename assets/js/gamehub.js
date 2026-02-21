@@ -1,5 +1,5 @@
 (async () => {
-    const TAG_COLORS = ['ctag-0', 'ctag-1', 'ctag-2', 'ctag-3'];
+    const TAG_COLORS = ['c-tag-cyan', 'c-tag-purple', 'c-tag-pink', 'c-tag-yellow'];
     let allGames = [];
     let activeTag = 'all';
     let tagColorMap = {};

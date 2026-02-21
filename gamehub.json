@@ -2,100 +2,100 @@
   "title": "JOOLIX Gamehub",
   "games": [
     {
+      "id": "a5917169-6bef-4db8-a35d-a1a2b9072f8f",
       "title": "Neon Runner",
       "slug": "neon-runner",
       "descriptions": "Dive into a chaotic underworld dungeon adventure with rogue-like mechanics, bullets everywhere, and permadeath that never gets old.",
       "motivation": "Dive into a chaotic underworld dungeon adventure with rogue-like mechanics, bullets everywhere, and permadeath that never gets old.",
       "image": "./games/neon-runner/assets/images/lightbox2.png",
+      "order": 1,
       "tags": [
         "Action",
         "Roguelike",
         "Indie"
-      ]
+      ],
+      "created_at": 1771657299000,
+      "updated_at": 1771657299000
     },
     {
+      "id": "d61798e1-2aa8-4da2-b701-e2b6992bb43f",
       "title": "Stellar Drift",
       "slug": "stellar-drift",
       "descriptions": "Explore the cosmos in this open-world space sim. Build fleets, colonize planets, and wage galactic wars across procedurally generated universes.",
       "motivation": "Explore the cosmos in this open-world space sim. Build fleets, colonize planets, and wage galactic wars across procedurally generated universes.",
       "image": "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=600&q=80",
+      "order": 2,
       "tags": [
         "Strategy",
         "Simulation",
         "Sci-Fi"
-      ]
+      ],
+      "created_at": 1771657299000,
+      "updated_at": 1771657299000
     },
     {
+      "id": "9e754031-94b3-441a-9c7b-c5d18707caac",
       "title": "Hollow Shadows",
       "slug": "hollow-shadows",
       "descriptions": "A gothic metroidvania dripping with atmosphere. Uncover ancient secrets in a crumbling world where every corner hides danger and lore.",
-      "motivation": "A gothic metroidvania dripping with atmosphere. Uncover ancient secrets in a crumbling world where every corner hides danger and lore.",
+      "motivation": "Dive into a chaotic underworld dungeon adventure with rogue-like mechanics, bullets everywhere, and permadeath that never gets old.",
       "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&q=80",
+      "order": 3,
       "tags": [
         "Adventure",
         "Metroidvania",
         "Indie"
-      ]
+      ],
+      "created_at": 1771657299000,
+      "updated_at": 1771657299000
     },
     {
+      "id": "b53bbe58-d1a8-4633-8d65-1b12607a6751",
       "title": "Iron Siege",
+      "slug": "iron-siege",
       "descriptions": "Real-time tactical warfare on a massive scale. Command armies, fortify bases, and crush your enemies in brutal multiplayer battles.",
+      "motivation": "Dive into a chaotic underworld dungeon adventure with rogue-like mechanics, bullets everywhere, and permadeath that never gets old.",
       "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&q=80",
+      "order": 4,
       "tags": [
         "Strategy",
         "Multiplayer",
         "Action"
-      ]
+      ],
+      "created_at": 1771657299000,
+      "updated_at": 1771657299000
     },
     {
+      "id": "90a845ac-7112-4167-8a54-7ad570ffe4bd",
       "title": "Verdant Realm",
+      "slug": "verdant-realm",
       "descriptions": "A serene open-world RPG where you cultivate a living ecosystem. Craft, farm, and forge alliances with nature spirits.",
+      "motivation": "Dive into a chaotic underworld dungeon adventure with rogue-like mechanics, bullets everywhere, and permadeath that never gets old.",
       "image": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=600&q=80",
+      "order": 5,
       "tags": [
         "RPG",
         "Sandbox",
         "Simulation"
-      ]
+      ],
+      "created_at": 1771657299000,
+      "updated_at": 1771657299000
     },
     {
+      "id": "025815cf-dda6-42cf-b837-52f2a673d993",
       "title": "Phantom Protocol",
+      "slug": "phantom-protocol",
       "descriptions": "Elite cyber-operative stealth thriller. Hack systems, ghost through enemy lines, and expose a global conspiracy one mission at a time.",
+      "motivation": "Dive into a chaotic underworld dungeon adventure with rogue-like mechanics, bullets everywhere, and permadeath that never gets old.",
       "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&q=80",
+      "order": 6,
       "tags": [
         "Stealth",
         "Sci-Fi",
         "Action"
-      ]
-    },
-    {
-      "title": "Runic Depths",
-      "descriptions": "Descend into procedurally generated dungeons powered by ancient rune magic. Combine spells, discover artifacts, and survive the deep.",
-      "image": "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=600&q=80",
-      "tags": [
-        "Roguelike",
-        "RPG",
-        "Indie"
-      ]
-    },
-    {
-      "title": "Apex Circuit",
-      "descriptions": "Hyper-velocity racing across gravity-defying tracks. Upgrade your ship, master the circuits, and dominate the leaderboards.",
-      "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
-      "tags": [
-        "Racing",
-        "Multiplayer",
-        "Action"
-      ]
-    },
-    {
-      "title": "Chronicles of Eld",
-      "descriptions": "Epic narrative RPG spanning three continents and five centuries. Your choices reshape history in ways no other RPG dares to attempt.",
-      "image": "https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=600&q=80",
-      "tags": [
-        "RPG",
-        "Adventure",
-        "Story-Rich"
-      ]
+      ],
+      "created_at": 1771657299000,
+      "updated_at": 1771657299000
     }
   ]
 }

@@ -30,6 +30,39 @@ joolix-gamehub/
 - Keep media paths relative to repo root in `gamehub.json` (example: `./games/neon-runner/assets/images/cover.png`).
 - Keep one game per folder under `games/`.
 
+### Asset Addressing Convention (Per Game)
+
+- Document root is `/gamehub`.
+- Each game's `index.html` should reference local assets relative to that game folder.
+- Keep CSS, JS, and image references inside the game with `./assets/...` paths.
+
+Example for `games/neon-runner/index.html`:
+
+```html
+<!-- CSS -->
+<link rel="stylesheet" href="./assets/css/style.css" />
+
+<!-- JS / scripts -->
+<script src="./assets/scripts/game.js"></script>
+
+<!-- Images -->
+<img src="./assets/images/joolix_runner_npc.webp" alt="Runner NPC" />
+```
+
+Recommended per-game asset layout:
+
+```text
+games/<game-slug>/
+├── index.html
+└── assets/
+    ├── css/
+    │   └── style.css
+    ├── scripts/
+    │   └── game.js
+    └── images/
+        └── <image-files>
+```
+
 ## `gamehub.json` Structure Pattern
 
 `gamehub.json` is the single source of truth for game metadata.

@@ -12,6 +12,14 @@
     {
       "title": "Indie",
       "color": "#ff2d6b"
+    },
+    {
+      "title": "Race",
+      "color": "#eaea00"
+    },
+    {
+      "title": "Car",
+      "color": "#00eaea"
     }
   ],
   "games": [
@@ -27,6 +35,21 @@
         "Action",
         "Roguelike",
         "Indie"
+      ],
+      "created_at": 1771657299000,
+      "updated_at": 1771657299000
+    },
+    {
+      "id": "a5917169-6bef-4db8-a35d-a1a2b9072f8f",
+      "title": "Trigger Rally",
+      "slug": "trigger-rally",
+      "descriptions": "Push your driving skills to the limit with tight cornering, handbrake turns, and split-second reactions. Compete in real-time multiplayer stages, climb global leaderboards, join seasonal championships, and challenge friends in time trials.",
+      "motivation": "# Ride Rally",
+      "image": "./games/trigger-rally/images/trigger-rally.jpg",
+      "order": 2,
+      "tags": [
+        "Race",
+        "Car"
       ],
       "created_at": 1771657299000,
       "updated_at": 1771657299000

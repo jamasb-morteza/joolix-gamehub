@@ -674,7 +674,7 @@ const NeonJoolixRunner = (function() {
 
       // Load Joolix sprite
       joolixSprite = new Image();
-      joolixSprite.src = '/images/joolix/joolix_runner_npc.webp';
+      joolixSprite.src = './assets/images/joolix_runner_npc.webp';
 
       // Handle load error
       joolixSprite.onerror = function() {

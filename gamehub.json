@@ -1,56 +1,102 @@
 {
   "title": "JOOLIX Gamehub",
   "tags": [
-    {
-      "title": "Action",
-      "color": "#00f5d4"
-    },
-    {
-      "title": "Roguelike",
-      "color": "#b08dff"
-    },
-    {
-      "title": "Indie",
-      "color": "#ff2d6b"
-    },
-    {
-      "title": "Race",
-      "color": "#eaea00"
-    },
-    {
-      "title": "Car",
-      "color": "#00eaea"
-    }
+    { "title": "Focus", "color": "#1E90FF" },
+    { "title": "Performance", "color": "#2ECC71" },
+    { "title": "Speed", "color": "#FF8C00" },
+    { "title": "Precision", "color": "#00CED1" },
+    { "title": "Strategy", "color": "#8E44AD" },
+    { "title": "MicroBreak", "color": "#7DFF72" },
+    { "title": "Reflex", "color": "#FF2D6B" },
+    { "title": "Racing", "color": "#F1C40F" },
+    { "title": "Cognitive", "color": "#E67E22" },
+
+    { "title": "Puzzle", "color": "#6C5CE7" },
+    { "title": "Adventure", "color": "#00B894" },
+    { "title": "Mystery", "color": "#2D3436" },
+    { "title": "Exploration", "color": "#0984E3" },
+    { "title": "Story", "color": "#E84393" },
+    { "title": "Calm", "color": "#34495E" }
   ],
+
+  "soft_skills": [
+    { "name": "Focus", "color": "#1E90FF" },
+    { "name": "DecisionMaking", "color": "#FF8C00" },
+    { "name": "StressManagement", "color": "#34495E" },
+    { "name": "Adaptability", "color": "#27AE60" },
+    { "name": "Precision", "color": "#00CED1" },
+    { "name": "StrategicThinking", "color": "#8E44AD" },
+    { "name": "Consistency", "color": "#2ECC71" },
+    { "name": "ReactionSpeed", "color": "#FF2D6B" },
+    { "name": "CognitiveAgility", "color": "#E67E22" },
+    { "name": "SelfImprovement", "color": "#F39C12" }
+  ],
+
   "games": [
     {
-      "id": "a5917169-6bef-4db8-a35d-a1a2b9072f8f",
+      "id": 1,
       "title": "Neon Runner",
       "slug": "neon-runner",
-      "descriptions": "Dive into a chaotic underworld dungeon adventure with rogue-like mechanics, bullets everywhere, and permadeath that never gets old.",
-      "motivation": "# Neon Runner — quick run, big gains \n\n **Jump. Dodge. Focus.**\nNeon Runner is a fast, addictive mini-game built to test and celebrate short-burst attention, quick decision-making, and calm under pressure — perfect for approving focus, measuring situational awareness, and rewarding soft skills useful in coworking.\n\n---\n\n## What it is\n\nNeon Runner is a side-scrolling runner where your avatar automatically moves forward. You have two simple actions:\n\n* **Jump** — clear obstacles and gaps\n* **Dodge** — avoid low barriers and hazards\n\nSimple controls, *high* psychological payoff: quick reflex loops, escalating difficulty, and little wins every few seconds.\n\n---\n\n## Why play this for approval\n\nThis isn't just a fun distraction — it's a lightweight, measurable way to surface soft skills employers and teams care about:\n\n* **Sustained attention**: staying engaged during repetitive, focus-demanding tasks.\n* **Reaction & decision speed**: making safe, correct choices under time pressure.\n* **Stress management**: maintaining accuracy as obstacles accelerate.\n* **Learning & adaptation**: improving performance across short runs (shows coachability).\n* **Team readiness**: great as a warm-up for paired tasks or co-working sprints.\n\nUse Neon Runner as a quick checkpoint: a few short rounds + consistent improvement = evidence of focus and adaptability.\n\n---\n\n## How approval can be measured\n\nSuggested, displayable metrics (simple & objective):\n\n* **Highest score** (distance / points)\n* **Average survival time** (over 3 rounds)\n* **Jump / Dodge accuracy** (successful action rate)\n* **Reaction latency** (time between obstacle and action)\n\nA short approval rule example: *“Passed focus check if average survival ≥ 60s and action accuracy ≥ 85% over 3 attempts.”*\n\n---\n\n## Tips to win (and improve focus)\n\n* Start calm — deep breath before the run. \uD83D\uDC43➡\uFE0F\uD83C\uDFC3\n* Watch pattern rhythm, not individual obstacles — rhythm predicts what's next.\n* Use small, confident taps for jump; hold only if the level requires it.\n* After a mistake, reset mentally — each run is independent.\n* Practice 3×2-minute sessions rather than one long attempt.\n\n---\n\n## Suggested micro-challenges (for teams)\n\n* **Buddy warm-up**: teammates take turns; lowest score does a 1-minute focused breathing exercise.\n* **Adaptive sprint**: speed increases every 30s — see who adapts fastest.\n* **Blind callout**: one player calls upcoming obstacles while another plays — builds communication.\n\n---\n\n## Short motivational blurb (copy-ready)\n\n> Neon Runner is a short, focused challenge that sharpens attention, reaction, and teamwork. Jump, dodge, and beat your personal best — every run trains habits that make real work smoother. Play three rounds, show steady improvement, and earn the Focus approval badge. Ready? Neon awaits. ⚡\n\n---\n\nWant a slightly shorter or longer variant (e.g., for a tooltip, modal, or email)? I can trim or tailor it to fit exactly where you'll show it in Joolix.\n",
-      "image": "./games/neon-runner/assets/images/lightbox2.png",
+      "descriptions": "A fast micro-break runner built for quick mental reset: dodge, jump, and stay sharp.",
+      "motivation": "# Neon Runner — Micro-break, Mega reset\n\nA 2–3 minute sprint to refresh attention and return sharper.\n\n> Short run. Clean mind. Back to impact. ⚡",
+      "image": "./games/neon-runner/images/lightbox1.jpg",
       "order": 1,
-      "tags": [
-        "Action",
-        "Roguelike",
-        "Indie"
-      ],
+      "tags": ["Focus", "Reflex", "MicroBreak"],
+      "soft_skills": ["Focus", "ReactionSpeed", "StressManagement"],
       "created_at": 1771657299000,
       "updated_at": 1771657299000
     },
     {
-      "id": "a5917169-6bef-4db8-a35d-a1a2b9072f8f",
+      "id": 2,
       "title": "Trigger Rally",
       "slug": "trigger-rally",
-      "descriptions": "Push your driving skills to the limit with tight cornering, handbrake turns, and split-second reactions. Compete in real-time multiplayer stages, climb global leaderboards, join seasonal championships, and challenge friends in time trials.",
-      "motivation": "# Ride Rally",
+      "descriptions": "A precision-driving micro-challenge that sharpens control and execution.",
+      "motivation": "# Trigger Rally — Control the chaos\n\nClean lines. Smart moves. Steady execution.\n\n> Control the turn. Control the moment. 🏁",
       "image": "./games/trigger-rally/images/trigger-rally.jpg",
       "order": 2,
-      "tags": [
-        "Race",
-        "Car"
-      ],
+      "tags": ["Precision", "Strategy", "Racing"],
+      "soft_skills": ["Precision", "StrategicThinking", "Consistency"],
+      "created_at": 1771657299000,
+      "updated_at": 1771657299000
+    },
+    {
+      "id": 3,
+      "title": "HexGL",
+      "slug": "hexgl",
+      "descriptions": "A high-speed anti-gravity racing micro-break designed to sharpen focus and rapid decision-making.",
+      "motivation": "# HexGL — Fast mind, clean decisions\n\nHigh-speed focus training in a futuristic racing burst.\n\n> Go fast. Think faster. 🚀",
+      "image": "./games/hexgl/images/hexgl_banner.jpg",
+      "order": 3,
+      "tags": ["Speed", "Cognitive", "Performance"],
+      "soft_skills": ["DecisionMaking", "CognitiveAgility", "Adaptability"],
+      "created_at": 1771657299000,
+      "updated_at": 1771657299000
+    },
+
+    {
+      "id": 4,
+      "title": "the-house",
+      "slug": "the-house",
+      "descriptions": "A short, atmospheric point-and-click adventure focused on exploration and light puzzle-solving inside a mysterious house. Great for a calm mental reset that still keeps your brain engaged. 1",
+      "motivation": "# the-house — Calm exploration, sharp thinking\n\nNeed a softer break than high-speed reflex games? **the-house** gives you a short, story-driven exploration loop: observe details, test interactions, and progress step-by-step.\n\n---\n\n## Why it fits a workday break\n\n* **Low-stress engagement** — calm pacing for mental recovery\n* **Better attention to detail** — noticing small cues and patterns\n* **Structured problem-solving** — try, learn, and move forward\n\n---\n\n## Best use inside JOOLIO\n\n* 5–10 minutes when you want a **quiet reset** (between calls, after meetings)\n* Great alternative break for employees who prefer **calm focus** over fast action\n\n---\n\n> Slow down, notice more, return with a clearer mind. 🏠\n",
+      "image": "./games/the-house/images/the-house_banner.jpg",
+      "order": 4,
+      "tags": ["Adventure", "Puzzle", "Mystery"],
+      "soft_skills": ["StrategicThinking", "DecisionMaking", "Focus"],
+      "created_at": 1771657299000,
+      "updated_at": 1771657299000
+    },
+
+    {
+      "id": 5,
+      "title": "Descensus 2",
+      "slug": "descensus2",
+      "descriptions": "A 2D physics-driven arcade challenge that rewards calm control and smart adjustments—great for a focused micro-break without intensity overload.",
+      "motivation": "# Descensus 2 — Calm control, sharp results\n\nDescensus 2 is a short physics challenge where steady inputs beat rushed moves. A clean mental reset when you want focus without speed stress.\n\n---\n\n## Why it fits a workday break\n\n* **Controlled problem-solving** — adjust, observe, refine\n* **Attention to detail** — precision wins\n* **Low-stress engagement** — immersive but not overwhelming\n\n---\n\n> Stay steady. Solve the motion. Return sharper. 🎯\n",
+      "image": "./games/descensus2/images/descensus2_banner.jpg",
+      "order": 5,
+      "tags": ["Precision", "Cognitive", "MicroBreak"],
+      "soft_skills": ["Precision", "Focus", "DecisionMaking"],
       "created_at": 1771657299000,
       "updated_at": 1771657299000
     }

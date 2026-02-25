@@ -154,9 +154,9 @@
         return {
             color: normalized,
             borderColor: `rgba(${rgb.r},${rgb.g},${rgb.b},0.35)`,
-            activeBorderColor: `rgba(${rgb.r},${rgb.g},${rgb.b},0.90)`,
+            activeBorderColor: `rgba(${rgb.r},${rgb.g},${rgb.b},0.95)`,
             background: `rgba(${rgb.r},${rgb.g},${rgb.b},0.07)`,
-            activeBackground: `rgba(${rgb.r},${rgb.g},${rgb.b},0.20)`,
+            activeBackground: `rgba(${rgb.r},${rgb.g},${rgb.b},0.30)`,
         };
     }
 

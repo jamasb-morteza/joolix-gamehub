@@ -155,27 +155,26 @@
   }
 
   // ---------- Inject button ----------
-  function ensureTitleRow(card) {
-    const title = card.querySelector('.card-title');
-    if (!title) return null;
+  function ensureCardFooter(card) {
+    const existing = card.querySelector('.card-footer');
+    if (existing) return existing;
 
-    const parent = title.parentElement;
-    if (parent && parent.classList && parent.classList.contains('gh-card-title-row')) return parent;
+    const footer = document.createElement('div');
+    footer.className = 'card-footer';
 
-    const row = document.createElement('div');
-    row.className = 'gh-card-title-row';
+    const body = card.querySelector('.card-body');
+    if (body && body.parentNode === card) card.appendChild(footer);
+    else card.appendChild(footer);
 
-    title.parentNode.insertBefore(row, title);
-    row.appendChild(title);
-    return row;
+    return footer;
   }
 
   function injectButtons() {
     document.querySelectorAll('.game-card').forEach((card) => {
       if (card.querySelector(`.${BTN_CLASS}`)) return;
 
-      const row = ensureTitleRow(card);
-      if (!row) return;
+      const footer = ensureCardFooter(card);
+      if (!footer) return;
 
       const btn = document.createElement('button');
       btn.type = 'button';
@@ -206,7 +205,7 @@
         }
       });
 
-      row.appendChild(btn);
+      footer.appendChild(btn);
     });
   }
 

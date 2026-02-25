@@ -224,6 +224,8 @@ h1 {
     overflow: hidden;
     transition: 0.3s ease;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
 }
 
 .game-card:hover {
@@ -298,6 +300,7 @@ h1 {
 
 .card-body {
     padding: 18px;
+    flex: 1;
 }
 
 .card-title {
@@ -581,11 +584,11 @@ body::after {
     z-index: 2;
 }
 
-.gh-card-title-row {
+.card-footer {
+    margin-top: auto;
+    padding: 0 18px 14px;
     display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 0.9em;
+    justify-content: flex-end;
 }
 
 .gh-growth-impact-btn {
@@ -1132,21 +1135,7 @@ html[dir="rtl"] .gh-fav-remove {
     text-align: center;
 }
 
-/* Make card-body relative for absolute button positioning */
-.card-body {
-    position: relative;
-    padding-bottom: 42px; /* space for growth impact button */
-}
-
-/* Move Growth Impact to bottom */
-.gh-growth-impact-btn {
-    position: absolute;
-    bottom: 12px;
-    right: 14px;
-}
-
-/* RTL flip */
-html[dir="rtl"] .gh-growth-impact-btn {
-    right: auto;
-    left: 14px;
+/* Keep Growth Impact button in footer and align for RTL */
+html[dir="rtl"] .card-footer {
+    justify-content: flex-start;
 }

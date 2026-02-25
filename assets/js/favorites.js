@@ -211,10 +211,19 @@
     observer.observe(grid, { childList: true });
   }
 
+  function syncFavoritesUiFromData() {
+    renderFavorites();
+    injectStars();
+    refreshAllStars();
+  }
+
+  window.addEventListener('gamehub:data-ready', () => {
+    syncFavoritesUiFromData();
+  });
+
   document.addEventListener('DOMContentLoaded', () => {
     loadFav();
     observeGrid();
-    renderFavorites();
-    refreshAllStars();
+    syncFavoritesUiFromData();
   });
 })();

@@ -1,5 +1,5 @@
 {
-  "title": "JOOLIX Gamehub",
+  "title": "_{title}",
   "tags": [
     { "title": "Focus", "color": "#1E90FF" },
     { "title": "Performance", "color": "#2ECC71" },
@@ -10,15 +10,13 @@
     { "title": "Reflex", "color": "#FF2D6B" },
     { "title": "Racing", "color": "#F1C40F" },
     { "title": "Cognitive", "color": "#E67E22" },
-
-    { "title": "Puzzle", "color": "#6C5CE7" },
     { "title": "Adventure", "color": "#00B894" },
     { "title": "Mystery", "color": "#2D3436" },
     { "title": "Exploration", "color": "#0984E3" },
     { "title": "Story", "color": "#E84393" },
-    { "title": "Calm", "color": "#34495E" }
+    { "title": "Calm", "color": "#34495E" },
+    { "title": "Puzzle", "color": "#6C5CE7" }
   ],
-
   "soft_skills": [
     { "name": "Focus", "color": "#1E90FF" },
     { "name": "DecisionMaking", "color": "#FF8C00" },
@@ -31,74 +29,229 @@
     { "name": "CognitiveAgility", "color": "#E67E22" },
     { "name": "SelfImprovement", "color": "#F39C12" }
   ],
-
   "games": [
     {
       "id": 1,
       "title": "Neon Runner",
       "slug": "neon-runner",
-      "descriptions": "A fast micro-break runner built for quick mental reset: dodge, jump, and stay sharp.",
-      "motivation": "# Neon Runner — Micro-break, Mega reset\n\nA 2–3 minute sprint to refresh attention and return sharper.\n\n> Short run. Clean mind. Back to impact. ⚡",
+      "descriptions": "_{1_descriptions}",
+      "motivation": [
+        "_{1_motivation_1}",
+        "_{1_motivation_2}",
+        "_{1_motivation_3}",
+        "_{1_motivation_4}",
+        "_{1_motivation_5}"
+      ],
       "image": "./games/neon-runner/images/lightbox1.jpg",
       "order": 1,
       "tags": ["Focus", "Reflex", "MicroBreak"],
-      "soft_skills": ["Focus", "ReactionSpeed", "StressManagement"],
-      "created_at": 1771657299000,
-      "updated_at": 1771657299000
+      "soft_skills": ["Focus", "ReactionSpeed", "StressManagement"]
     },
     {
       "id": 2,
       "title": "Trigger Rally",
       "slug": "trigger-rally",
-      "descriptions": "A precision-driving micro-challenge that sharpens control and execution.",
-      "motivation": "# Trigger Rally — Control the chaos\n\nClean lines. Smart moves. Steady execution.\n\n> Control the turn. Control the moment. 🏁",
+      "descriptions": "_{2_descriptions}",
+      "motivation": [
+        "_{2_motivation_1}",
+        "_{2_motivation_2}",
+        "_{2_motivation_3}",
+        "_{2_motivation_4}",
+        "_{2_motivation_5}"
+      ],
       "image": "./games/trigger-rally/images/trigger-rally.jpg",
       "order": 2,
       "tags": ["Precision", "Strategy", "Racing"],
-      "soft_skills": ["Precision", "StrategicThinking", "Consistency"],
-      "created_at": 1771657299000,
-      "updated_at": 1771657299000
+      "soft_skills": ["Precision", "StrategicThinking", "Consistency"]
     },
     {
       "id": 3,
-      "title": "HexGL",
+      "title": "Hex GL",
       "slug": "hexgl",
-      "descriptions": "A high-speed anti-gravity racing micro-break designed to sharpen focus and rapid decision-making.",
-      "motivation": "# HexGL — Fast mind, clean decisions\n\nHigh-speed focus training in a futuristic racing burst.\n\n> Go fast. Think faster. 🚀",
+      "descriptions": "_{3_descriptions}",
+      "motivation": [
+        "_{3_motivation_1}",
+        "_{3_motivation_2}",
+        "_{3_motivation_3}",
+        "_{3_motivation_4}",
+        "_{3_motivation_5}"
+      ],
       "image": "./games/hexgl/images/hexgl_banner.jpg",
       "order": 3,
       "tags": ["Speed", "Cognitive", "Performance"],
-      "soft_skills": ["DecisionMaking", "CognitiveAgility", "Adaptability"],
-      "created_at": 1771657299000,
-      "updated_at": 1771657299000
+      "soft_skills": ["DecisionMaking", "CognitiveAgility", "Adaptability"]
     },
-
     {
       "id": 4,
-      "title": "the-house",
+      "title": "The House",
       "slug": "the-house",
-      "descriptions": "A short, atmospheric point-and-click adventure focused on exploration and light puzzle-solving inside a mysterious house. Great for a calm mental reset that still keeps your brain engaged. 1",
-      "motivation": "# the-house — Calm exploration, sharp thinking\n\nNeed a softer break than high-speed reflex games? **the-house** gives you a short, story-driven exploration loop: observe details, test interactions, and progress step-by-step.\n\n---\n\n## Why it fits a workday break\n\n* **Low-stress engagement** — calm pacing for mental recovery\n* **Better attention to detail** — noticing small cues and patterns\n* **Structured problem-solving** — try, learn, and move forward\n\n---\n\n## Best use inside JOOLIO\n\n* 5–10 minutes when you want a **quiet reset** (between calls, after meetings)\n* Great alternative break for employees who prefer **calm focus** over fast action\n\n---\n\n> Slow down, notice more, return with a clearer mind. 🏠\n",
+      "descriptions": "_{4_descriptions}",
+      "motivation": [
+        "_{4_motivation_1}",
+        "_{4_motivation_2}",
+        "_{4_motivation_3}",
+        "_{4_motivation_4}",
+        "_{4_motivation_5}"
+      ],
       "image": "./games/the-house/images/the-house_banner.jpg",
       "order": 4,
       "tags": ["Adventure", "Puzzle", "Mystery"],
-      "soft_skills": ["StrategicThinking", "DecisionMaking", "Focus"],
-      "created_at": 1771657299000,
-      "updated_at": 1771657299000
+      "soft_skills": ["StrategicThinking", "DecisionMaking", "Focus"]
     },
-
     {
       "id": 5,
       "title": "Descensus 2",
       "slug": "descensus2",
-      "descriptions": "A 2D physics-driven arcade challenge that rewards calm control and smart adjustments—great for a focused micro-break without intensity overload.",
-      "motivation": "# Descensus 2 — Calm control, sharp results\n\nDescensus 2 is a short physics challenge where steady inputs beat rushed moves. A clean mental reset when you want focus without speed stress.\n\n---\n\n## Why it fits a workday break\n\n* **Controlled problem-solving** — adjust, observe, refine\n* **Attention to detail** — precision wins\n* **Low-stress engagement** — immersive but not overwhelming\n\n---\n\n> Stay steady. Solve the motion. Return sharper. 🎯\n",
+      "descriptions": "_{5_descriptions}",
+      "motivation": [
+        "_{5_motivation_1}",
+        "_{5_motivation_2}",
+        "_{5_motivation_3}",
+        "_{5_motivation_4}",
+        "_{5_motivation_5}"
+      ],
       "image": "./games/descensus2/images/descensus2_banner.jpg",
       "order": 5,
       "tags": ["Precision", "Cognitive", "MicroBreak"],
-      "soft_skills": ["Precision", "Focus", "DecisionMaking"],
-      "created_at": 1771657299000,
-      "updated_at": 1771657299000
+      "soft_skills": ["Precision", "Focus", "DecisionMaking"]
+    },
+    {
+      "id": 6,
+      "title": "Turkey Cooking",
+      "slug": "turkey-cooking",
+      "descriptions": "_{6_descriptions}",
+      "motivation": [
+        "_{6_motivation_1}",
+        "_{6_motivation_2}",
+        "_{6_motivation_3}",
+        "_{6_motivation_4}",
+        "_{6_motivation_5}"
+      ],
+      "image": "./games/turkey-cooking/images/turkey-cooking_banner.jpg",
+      "order": 6,
+      "tags": ["Cognitive", "Strategy", "Adventure"],
+      "soft_skills": ["DecisionMaking", "Focus", "Adaptability"]
+    },
+    {
+      "id": 7,
+      "title": "Cube Composer",
+      "slug": "cube-composer",
+      "descriptions": "_{7_descriptions}",
+      "motivation": [
+        "_{7_motivation_1}",
+        "_{7_motivation_2}",
+        "_{7_motivation_3}",
+        "_{7_motivation_4}",
+        "_{7_motivation_5}"
+      ],
+      "image": "./games/cube-composer/images/cube-composer_banner.jpg",
+      "order": 7,
+      "tags": ["Puzzle", "Cognitive", "Strategy"],
+      "soft_skills": ["CognitiveAgility", "StrategicThinking", "Focus"]
+    },
+    {
+      "id": 8,
+      "title": "Maze3D",
+      "slug": "maze3d",
+      "descriptions": "_{8_descriptions}",
+      "motivation": [
+        "_{8_motivation_1}",
+        "_{8_motivation_2}",
+        "_{8_motivation_3}",
+        "_{8_motivation_4}",
+        "_{8_motivation_5}"
+      ],
+      "image": "./games/maze3d/images/maze3d_banner.jpg",
+      "order": 8,
+      "tags": ["Cognitive", "Puzzle", "Exploration"],
+      "soft_skills": ["DecisionMaking", "Focus", "CognitiveAgility"]
+    },
+    {
+      "id": 9,
+      "title": "Mario",
+      "slug": "mariohtml5",
+      "descriptions": "_{9_descriptions}",
+      "motivation": [
+        "_{9_motivation_1}",
+        "_{9_motivation_2}",
+        "_{9_motivation_3}",
+        "_{9_motivation_4}",
+        "_{9_motivation_5}"
+      ],
+      "image": "./games/mariohtml5/images/mario_banner.jpg",
+      "order": 9,
+      "tags": ["Adventure", "Reflex", "MicroBreak"],
+      "soft_skills": ["Focus", "ReactionSpeed", "Adaptability"]
+    },
+    {
+      "id": 10,
+      "title": "Parity",
+      "slug": "parity",
+      "descriptions": "_{10_descriptions}",
+      "motivation": [
+        "_{10_motivation_1}",
+        "_{10_motivation_2}",
+        "_{10_motivation_3}",
+        "_{10_motivation_4}",
+        "_{10_motivation_5}"
+      ],
+      "image": "./games/parity/images/parity_banner.jpg",
+      "order": 10,
+      "tags": ["Puzzle", "Cognitive", "Strategy"],
+      "soft_skills": ["CognitiveAgility", "StrategicThinking", "Focus"]
+    },
+    {
+      "id": 11,
+      "title": "Infectors",
+      "slug": "infectors",
+      "descriptions": "_{11_descriptions}",
+      "motivation": [
+        "_{11_motivation_1}",
+        "_{11_motivation_2}",
+        "_{11_motivation_3}",
+        "_{11_motivation_4}",
+        "_{11_motivation_5}"
+      ],
+      "image": "./games/infectors/images/infectors_banner.jpg",
+      "order": 11,
+      "tags": ["Puzzle", "Cognitive", "Strategy"],
+      "soft_skills": ["CognitiveAgility", "StrategicThinking", "Focus"]
+    },
+    {
+      "id": 12,
+      "title": "Friday Night Funkin",
+      "slug": "funkin",
+      "descriptions": "_{12_descriptions}",
+      "motivation": [
+        "_{12_motivation_1}",
+        "_{12_motivation_2}",
+        "_{12_motivation_3}",
+        "_{12_motivation_4}",
+        "_{12_motivation_5}"
+      ],
+      "image": "./games/funkin/images/funkin_banner.jpg",
+      "order": 12,
+      "tags": ["Focus", "Reflex", "Performance"],
+      "soft_skills": ["ReactionSpeed", "Focus", "Consistency"]
+    },
+    {
+      "id": 13,
+      "title": "2048",
+      "slug": "2048",
+      "descriptions": "_{13_descriptions}",
+      "motivation": [
+        "_{13_motivation_1}",
+        "_{13_motivation_2}",
+        "_{13_motivation_3}",
+        "_{13_motivation_4}",
+        "_{13_motivation_5}"
+      ],
+      "image": "./games/2048/images/2048_banner.jpg",
+      "order": 13,
+      "tags": ["Puzzle", "Cognitive", "Strategy"],
+      "soft_skills": ["CognitiveAgility", "StrategicThinking", "Focus"],
+      "created_at": "2026-02-25T00:00:00Z",
+      "updated_at": "2026-02-25T00:00:00Z"
     }
   ]
 }

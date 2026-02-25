@@ -4,7 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JOOLIX Gamehub</title>
-
+<script>
+  (function () {
+    try {
+      var lang = localStorage.getItem('joolix_lang') || 'en';
+      document.documentElement.setAttribute('lang', lang);
+      document.documentElement.setAttribute('dir', lang === 'fa' ? 'rtl' : 'ltr');
+    } catch (e) {}
+  })();
+</script>
   <link rel="icon" type="image/webp" href="./assets/images/branding/joolix_fav_green.webp" />
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -12,10 +20,20 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <link rel="stylesheet" href="./assets/css/gamehub.css" />
+
 </head>
 
 <body class="p-2 md:p-6">
-
+<div class="gh-langbar">
+    <div class="gh-langbar-inner glass">
+      <span class="gh-langbar-label">Language</span>
+      <button id="lang-en" type="button" class="gh-langbtn active">English</button>
+      <button id="lang-fa" type="button" class="gh-langbtn">Persian</button>
+    </div>
+    <div id="lang-test" class="glass rounded-[1.2rem] p-4 text-center mt-3 mb-4" style="display:none;">
+  ...
+</div>
+  </div>
   <div class="ambient ambient-1"></div>
   <div class="ambient ambient-2"></div>
   <div class="ambient ambient-3"></div>
@@ -85,12 +103,14 @@
     <iframe id="overlay-frame" src="about:blank" title="Game Frame"></iframe>
   </div>
 
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="./assets/js/aos.js"></script>
   <script>
     AOS.init({ duration: 800, once: true });
     lucide.createIcons();
   </script>
-
-  <script type="module" src="./assets/js/gamehub.js"></script>
+<script src="./assets/js/lang.js"></script>
+  <script type="module" src="./assets/js/gamehub.js?v=2"></script>
+<script src="./assets/js/motivation.js?v=2"></script>
+<script src="./assets/js/favorites.js"></script>
 </body>
 </html>

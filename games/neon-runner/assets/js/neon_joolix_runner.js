@@ -303,19 +303,10 @@ const NeonJoolixRunner = (function() {
 
   function resizeCanvas() {
     const wrapper = canvas.parentElement;
-    const width = Math.max(1, Math.floor(wrapper.clientWidth));
-    const height = Math.floor(width * (300 / 800));
-
-    canvas.width = width;
-    canvas.height = height;
-    canvas.style.width = '100%';
-    canvas.style.height = height + 'px';
-
-    if (joolix) {
-      const wasDucking = joolix.isDucking;
-      joolix.groundY = canvas.height - CONFIG.groundHeight - 55;
-      joolix.y = wasDucking ? joolix.groundY + 25 : joolix.groundY;
-    }
+    const ratio = 800 / 300;
+    const width = Math.min(wrapper.clientWidth, 800);
+    canvas.style.width = width + 'px';
+    canvas.style.height = (width / ratio) + 'px';
   }
 
   function drawBackground() {

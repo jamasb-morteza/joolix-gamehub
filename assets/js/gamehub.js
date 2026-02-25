@@ -8,6 +8,7 @@
   let tagColorStyles = {};
   let tagColorIndex = 0;
   let tagsConfigMap = {};
+  let __DICT__ = {};
 
   const $ = (sel, root = document) => root.querySelector(sel);
   const byId = (id) => document.getElementById(id);
@@ -26,6 +27,94 @@
     const el = byId(id);
     if (el) el.style.display = 'none';
   };
+
+  // ---------- i18n ----------
+  function t(key, fallback = '') {
+    const v = __DICT__ && Object.prototype.hasOwnProperty.call(__DICT__, key)
+      ? __DICT__[key]
+      : undefined;
+    return (v == null || v === '') ? fallback : String(v);
+  }
+
+  function getBaseDir() {
+    const href = location.href.split('#')[0].split('?')[0];
+    if (href.endsWith('/')) return href;
+
+    const last = href.substring(href.lastIndexOf('/') + 1);
+    if (!last.includes('.')) return href + '/';
+    return href.replace(/[^/]*$/, '');
+  }
+
+  async function fetchJson(url) {
+    const res = await fetch(url, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`Fetch failed (${res.status}) → ${url}`);
+    return await res.json();
+  }
+
+  async function tryFetchJsonCandidates(candidates) {
+    let lastErr = null;
+    for (const url of candidates) {
+      try {
+        return await fetchJson(url);
+      } catch (e) {
+        lastErr = e;
+      }
+    }
+    throw lastErr || new Error('All candidates failed');
+  }
+
+  async function loadData() {
+    const baseDir = getBaseDir();
+    const v = Date.now();
+    const candidates = [
+      new URL(`gamehub.json?v=${v}`, baseDir).toString(),
+      `/joolix/games/gamehub.json?v=${v}`,
+      `/gamehub.json?v=${v}`,
+      `/gamehub/gamehub.json?v=${v}`
+    ];
+    return await tryFetchJsonCandidates(candidates);
+  }
+
+  async function loadDictionary() {
+    const STORAGE_KEY = 'joolix_lang';
+    const lang = (localStorage.getItem(STORAGE_KEY) === 'fa') ? 'fa' : 'en';
+
+    // language + direction + css hooks
+    document.documentElement.setAttribute('data-lang', lang);
+    document.documentElement.setAttribute('lang', lang);
+    document.documentElement.setAttribute('dir', lang === 'fa' ? 'rtl' : 'ltr');
+
+    const v = Date.now();
+    const baseDir = getBaseDir();
+    const candidates = [
+      new URL(`assets/i18n/${lang}.json?v=${v}`, baseDir).toString(),
+      `/assets/i18n/${lang}.json?v=${v}`,
+      `/gamehub/assets/i18n/${lang}.json?v=${v}`,
+      `/joolix/games/assets/i18n/${lang}.json?v=${v}`
+    ];
+
+    try {
+      return await tryFetchJsonCandidates(candidates);
+    } catch {
+      return {};
+    }
+  }
+
+  function resolvePlaceholders(obj, dict) {
+    if (typeof obj === 'string') {
+      const m = obj.match(/^_\{(.+)\}$/);
+      if (m) return (dict[m[1]] != null) ? dict[m[1]] : obj;
+      return obj;
+    }
+    if (Array.isArray(obj)) return obj.map(v => resolvePlaceholders(v, dict));
+    if (obj && typeof obj === 'object') {
+      const out = {};
+      for (const k in obj) out[k] = resolvePlaceholders(obj[k], dict);
+      return out;
+    }
+    return obj;
+  }
+  // ---------- end i18n ----------
 
   function normalizeHex(hex) {
     if (!hex || typeof hex !== 'string') return null;
@@ -76,36 +165,41 @@
     return tagColorStyles[tag];
   }
 
-  async function loadData() {
-    const baseDir = location.href.replace(/[#?].*$/, '').replace(/[^/]*$/, '');
-    const candidates = [
-      new URL('gamehub.json', baseDir).toString(),
-      '/joolix/games/gamehub.json',
-      '/gamehub.json',
-      '/gamehub/gamehub.json'
-    ];
+  function applyUiI18n() {
+    const loadingText = document.querySelector('#loading .loading-text');
+    if (loadingText) loadingText.textContent = t('ui_loading', 'Initializing JOOLIX GameHub…');
 
-    let lastErr = null;
+    const errTitle = document.querySelector('#error-msg .err-title');
+    if (errTitle) errTitle.textContent = t('ui_error_title', '⚠ SIGNAL LOST');
 
-    for (const url of candidates) {
-      try {
-        const res = await fetch(url, { cache: 'no-store' });
-        if (!res.ok) {
-          lastErr = new Error(`Fetch failed (${res.status}) → ${url}`);
-          continue;
-        }
-        return await res.json();
-      } catch (e) {
-        lastErr = new Error(`Fetch error → ${url}`);
-      }
-    }
+    const errSub = document.querySelector('#error-msg .err-sub');
+    if (errSub) errSub.textContent = t('ui_error_sub', 'Could not load gamehub.json');
 
-    throw lastErr || new Error('Could not load JSON');
+    const hubTitle = document.querySelector('.joolix-hub-title');
+    if (hubTitle) hubTitle.textContent = t('ui_hub_title', 'GameHub');
+
+    const hubSubtitle = document.querySelector('.joolix-hub-subtitle');
+    if (hubSubtitle) hubSubtitle.textContent = t('ui_hub_subtitle', 'Discover your next micro-break');
+
+    const filterLabel = document.querySelector('.filter-label');
+    if (filterLabel) filterLabel.textContent = t('ui_filter', 'Filter');
+
+    const allBtn = document.querySelector('.all-btn');
+    if (allBtn) allBtn.textContent = t('ui_all_games', 'All Games');
+
+    const overlayTitle = byId('overlay-title');
+    if (overlayTitle) overlayTitle.textContent = t('ui_overlay_title', 'Game');
+
+    const overlayBack = byId('overlay-back');
+    if (overlayBack) overlayBack.textContent = t('ui_back', 'Back');
   }
 
   function buildTagFilters(games) {
     const bar = $('.filter-bar');
     if (!bar) return;
+
+    // remove previous dynamic tags (keep .all-btn)
+    bar.querySelectorAll('.tag-btn:not(.all-btn)').forEach(n => n.remove());
 
     const tags = [...new Set((games || []).flatMap(g => g.tags || []))].sort();
 
@@ -115,7 +209,7 @@
       const btn = document.createElement('button');
       btn.className = 'tag-btn';
       btn.dataset.tag = tag;
-      btn.textContent = tag;
+      btn.textContent = t(`tag_${tag}`, tag);
 
       const neon = getTagColorStyle(tag);
       btn.style.borderColor = neon.borderColor;
@@ -133,9 +227,10 @@
     grid.innerHTML = '';
 
     if (!games || games.length === 0) {
+      const emptyText = t('ui_no_games_for_tag', 'No games found for this tag');
       grid.innerHTML = `<div class="empty">
         <div class="empty-icon">🎮</div>
-        <div class="empty-text">No games found for this tag</div>
+        <div class="empty-text">${emptyText}</div>
       </div>`;
       return;
     }
@@ -150,7 +245,7 @@
       const tags = (game.tags || []).map(tag => {
         const neon = getTagColorStyle(tag);
         const style = `color:${neon.color};border-color:${neon.borderColor};background:${neon.background};`;
-        return `<span class="ctag" style="${style}" data-tag="${tag}">${tag}</span>`;
+        return `<span class="ctag" style="${style}" data-tag="${tag}">${t(`tag_${tag}`, tag)}</span>`;
       }).join('');
 
       const imgSrc = game.image || `https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&q=80`;
@@ -177,10 +272,12 @@
         </div>
       `;
 
-      card.querySelectorAll('.ctag').forEach(t => {
-        t.addEventListener('click', e => {
+      // tag click => filter
+      card.querySelectorAll('.ctag').forEach(tEl => {
+        tEl.addEventListener('click', e => {
+          e.preventDefault();
           e.stopPropagation();
-          setActiveTag(t.dataset.tag);
+          setActiveTag(tEl.dataset.tag);
         });
       });
 
@@ -188,18 +285,23 @@
     });
   }
 
-  function setActiveTag(tag) {
+  function setActiveTag(tag, opts = { scroll: true }) {
     activeTag = tag;
 
     document.querySelectorAll('.tag-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.tag === tag);
     });
 
-    const filtered = tag === 'all' ? allGames : allGames.filter(g => g.tags && g.tags.includes(tag));
+    const filtered = tag === 'all'
+      ? allGames
+      : allGames.filter(g => g.tags && g.tags.includes(tag));
+
     renderCards(filtered);
 
-    const bar = $('.filter-bar');
-    if (bar) window.scrollTo({ top: bar.offsetTop - 20, behavior: 'smooth' });
+    if (opts && opts.scroll) {
+      const bar = $('.filter-bar');
+      if (bar) window.scrollTo({ top: bar.offsetTop - 20, behavior: 'smooth' });
+    }
   }
 
   function reveal() {
@@ -209,27 +311,36 @@
       setTimeout(() => { loading.style.display = 'none'; }, 500);
     }
 
-    safeShow('header', 'block');
     safeShow('main-content', 'block');
     safeShow('footer', 'block');
   }
 
   try {
     const data = await loadData();
+    const dict = await loadDictionary();
+    __DICT__ = dict || {};
 
-    allGames = data.games || [];
-    tagsConfigMap = (data.tags || []).reduce((acc, tag) => {
+    applyUiI18n();
+
+    const resolvedData = resolvePlaceholders(data, __DICT__);
+
+    // expose resolved data + dict for other modules (motivation.js / favorites.js)
+    window.__GAMEHUB_DATA__ = resolvedData;
+    window.__GAMEHUB_DICT__ = __DICT__;
+
+    allGames = resolvedData.games || [];
+
+    tagsConfigMap = (resolvedData.tags || []).reduce((acc, tag) => {
       const title = ((tag && tag.title) || '').trim();
       const color = normalizeHex(tag && tag.color);
       if (title) acc[title] = color;
       return acc;
     }, {});
 
-    if (data.title) {
-      safeText('hub-title', data.title);
-      safeText('hub-badge', data.title);
-      safeText('footer-text', data.title.toUpperCase() + ' ◆ GALLERY');
-      document.title = data.title;
+    if (resolvedData.title) {
+      const footerSuffix = t('ui_footer_suffix', 'GALLERY');
+      safeText('footer-text', String(resolvedData.title).toUpperCase() + ' ◆ ' + footerSuffix);
+      document.title = resolvedData.title;
     }
 
     buildTagFilters(allGames);
@@ -247,11 +358,5 @@
   } catch (err) {
     safeHide('loading');
     safeShow('error-msg', 'flex');
-
-    const errBox = byId('error-msg');
-    if (errBox) {
-      const sub = errBox.querySelector('.err-sub');
-      if (sub) sub.textContent = err && err.message ? err.message : 'Could not load gamehub.json';
-    }
   }
 })();

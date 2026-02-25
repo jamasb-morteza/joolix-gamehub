@@ -1,5 +1,5 @@
 {
-  "title": "گیم‌هاب JOOLIX",
+  "title": "GameHub JOOLIX",
   "1_descriptions": "یک رانر سریع برای میکروبریک و ریست ذهنی: جاخالی بده، بپر و تیز بمون.",
   "2_descriptions": "یک چالش رانندگی دقیق که کنترل و اجرای درست را تقویت می‌کند.",
   "3_descriptions": "مسابقه‌ی ضدجاذبه با سرعت بالا برای تصمیم‌گیری سریع.",
@@ -119,7 +119,7 @@
   "ui_loading": "در حال راه‌اندازی JOOLIX GameHub…",
   "ui_error_title": "⚠ ارتباط قطع شد",
   "ui_error_sub": "امکان بارگذاری gamehub.json وجود ندارد",
-  "ui_hub_title": "گیم‌هاب",
+  "ui_hub_title": "GameHub",
   "ui_hub_subtitle": "استراحت کوتاه بعدی‌ات را پیدا کن",
   "ui_perf_hub": "هاب عملکرد میکروبریک",
   "ui_footer_brand": "JOOLIX ◆ GAMEHUB",

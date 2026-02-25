@@ -31,6 +31,7 @@
     --glass: rgba(2, 28, 22, 0.62);
     --text: rgba(255, 255, 255, 0.92);
     --text-dim: rgba(255, 255, 255, 0.62);
+    --text-gold: rgba(255, 200, 0, 0.8);
     --border: rgba(6, 91, 64, 0.28);
     --glow: 0 0 22px rgba(6, 91, 64, 0.22), 0 0 60px rgba(6, 91, 64, 0.12);
 }
@@ -597,12 +598,9 @@ body::after {
     font: inherit;
     font-family: 'joolix', monospace;
     text-transform: uppercase;
-    letter-spacing: 0.18em;
-    font-size: 0.62rem;
-    color: var(--text-dim);
-    text-decoration: underline;
-    text-underline-offset: 0.35em;
-    text-decoration-thickness: 0.08em;
+    font-size: 0.9rem;
+    color: var(--text-gold);
+    text-decoration: none;
     opacity: 0.92;
     transition: transform 0.18s ease, opacity 0.18s ease, color 0.18s ease, filter 0.18s ease;
 }

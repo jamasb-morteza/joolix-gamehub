@@ -352,6 +352,7 @@
         // expose resolved data + dict for other modules (motivation.js / favorites.js)
         window.__GAMEHUB_DATA__ = resolvedData;
         window.__GAMEHUB_DICT__ = __DICT__;
+        window.dispatchEvent(new CustomEvent('gamehub:data-ready'));
 
         allGames = resolvedData.games || [];
 

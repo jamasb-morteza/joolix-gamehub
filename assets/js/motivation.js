@@ -87,7 +87,7 @@
       <div class="gh-motivation-panel" role="dialog" aria-modal="true" aria-labelledby="gh-motivation-title">
         <button class="gh-motivation-close" type="button" aria-label="Close" data-gh-close="1">×</button>
         <div class="gh-motivation-header">
-          <div class="gh-motivation-title" id="gh-motivation-title"></div>
+          <div class="gh-motivation-title text-center" id="gh-motivation-title"></div>
         </div>
         <div class="gh-motivation-body">
           <ul class="gh-motivation-list" id="gh-motivation-list"></ul>

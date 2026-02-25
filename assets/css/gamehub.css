@@ -152,6 +152,11 @@ strong, b {
     text-transform: uppercase;
 }
 
+
+html[lang=fa] .joolix-hub-title{
+    letter-spacing: 0;
+}
+
 .joolix-hub-subtitle {
     margin-top: 6px;
     font-size: 0.85rem;
@@ -1137,5 +1142,5 @@ html[dir="rtl"] .gh-fav-remove {
 
 /* Keep Growth Impact button in footer and align for RTL */
 html[dir="rtl"] .card-footer {
-    justify-content: flex-start;
+    justify-content: flex-end;
 }

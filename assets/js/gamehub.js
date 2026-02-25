@@ -146,7 +146,7 @@
                 borderColor: 'rgba(0,245,212,0.35)',
                 activeBorderColor: 'rgba(0,245,212,0.90)',
                 background: 'rgba(0,245,212,0.07)',
-                activeBackground: 'rgba(0,245,212,0.22)'
+                activeBackground: 'rgba(0,245,212,0.20)'
             };
         }
         const neonCore = NEON_CORE_OVERRIDES[normalized] || normalized;
@@ -154,9 +154,9 @@
         return {
             color: normalized,
             borderColor: `rgba(${rgb.r},${rgb.g},${rgb.b},0.35)`,
-            activeBorderColor: `rgba(${rgb.r},${rgb.g},${rgb.b},0.70)`,
+            activeBorderColor: `rgba(${rgb.r},${rgb.g},${rgb.b},0.90)`,
             background: `rgba(${rgb.r},${rgb.g},${rgb.b},0.07)`,
-            activeBackground: `rgba(${rgb.r},${rgb.g},${rgb.b},0.14)`,
+            activeBackground: `rgba(${rgb.r},${rgb.g},${rgb.b},0.20)`,
         };
     }
 
@@ -295,21 +295,24 @@
 
     function setActiveTag(tag, opts = {scroll: true}) {
         activeTag = tag;
-        const neon = getTagColorStyle(tag);
         document.querySelectorAll('.tag-btn').forEach(btn => {
-            if (btn.dataset.tag === tag) {
-                if (typeof neon.activeBorderColor !== 'undefined') {
-                    btn.style.borderColor = neon.activeBorderColor;
+            const btnTag = btn.dataset.tag;
+            const btnNeon = getTagColorStyle(btnTag);
+            const isActive = btnTag === tag;
+
+            if (isActive) {
+                if (typeof btnNeon.activeBorderColor !== 'undefined') {
+                    btn.style.borderColor = btnNeon.activeBorderColor;
                 }
-                if (typeof neon.activeBackground !== 'undefined') {
-                    btn.style.background = neon.activeBackground;
+                if (typeof btnNeon.activeBackground !== 'undefined') {
+                    btn.style.background = btnNeon.activeBackground;
                 }
             } else {
-                btn.style.borderColor = neon.borderColor;
-                btn.style.background = neon.background;
+                btn.style.borderColor = btnNeon.borderColor;
+                btn.style.background = btnNeon.background;
             }
 
-            btn.classList.toggle('active', btn.dataset.tag === tag);
+            btn.classList.toggle('active', isActive);
         });
 
         const filtered = tag === 'all'

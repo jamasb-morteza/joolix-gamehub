@@ -99,9 +99,11 @@
 
     // ✅ SUPER-ROBUST CLOSE: capture phase + pointerdown + click
     const closeIfNeeded = (e) => {
-      const t = e && e.target;
-      if (!t || !t.closest) return;
-      const hit = t.closest('[data-gh-close="1"]');
+      const rawTarget = e && e.target;
+      const target = rawTarget instanceof Element ? rawTarget : rawTarget && rawTarget.parentElement;
+      if (!target) return;
+
+      const hit = target.closest('[data-gh-close="1"]');
       if (hit && root.contains(hit)) {
         e.preventDefault();
         e.stopPropagation();

@@ -754,6 +754,16 @@ html.gh-modal-open {
     gap: 1em;
 }
 
+html[dir='rtl'] .gh-motivation-list {
+    direction: rtl;
+    text-align: right;
+}
+
+html[dir='ltr'] .gh-motivation-list {
+    direction: ltr;
+    text-align: left;
+}
+
 .gh-motivation-item {
     position: relative;
     padding-left: 2.2em;
@@ -762,6 +772,16 @@ html.gh-modal-open {
     line-height: 1.6;
     color: var(--text);
     letter-spacing: 0.02em;
+}
+
+html[dir='rtl'] .gh-motivation-item {
+    padding-left: 0;
+    padding-right: 2.2em;
+    text-align: right;
+}
+
+html[dir='ltr'] .gh-motivation-item {
+    text-align: left;
 }
 
 .gh-motivation-item::before {
@@ -774,6 +794,11 @@ html.gh-modal-open {
     color: var(--emerald);
     text-shadow: 0 0 6px rgba(6, 91, 64, 0.45), 0 0 18px rgba(6, 91, 64, 0.25);
     opacity: 0.9;
+}
+
+html[dir='rtl'] .gh-motivation-item::before {
+    left: auto;
+    right: 0;
 }
 
 .gh-motivation-empty {

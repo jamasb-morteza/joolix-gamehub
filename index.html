@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -9,10 +9,11 @@
             const params = new URLSearchParams(window.location.search);
             window.lang = params.get('lang');
             if (!lang) {
-                window.lang = localStorage.getItem('joolix_lang') || 'en';
+                window.lang = localStorage.getItem('joolix_lang') || 'fa';
             }
             try {
-                document.documentElement.setAttribute('lang', lang);
+
+                document.documentElement.setAttribute('lang', 'fa');
                 document.documentElement.setAttribute('dir', lang === 'fa' ? 'rtl' : 'ltr');
             } catch (e) {
             }
@@ -49,8 +50,11 @@
     <aside class="xl:col-span-3 space-y-6">
         <div class="glass rounded-[2.5rem] p-8 text-center" data-aos="fade-right">
             <div class="logo-shine-wrap mx-auto">
-                <img src="./assets/images/branding/joolix_light.webp" class="joolix-logo-img" alt="JOOLIX"
-                     loading="eager"
+                <img
+                        src="./assets/images/branding/joolix_light.webp"
+                        class="joolix-logo-img"
+                        alt="JOOLIX"
+                        loading="eager"
                 />
             </div>
 

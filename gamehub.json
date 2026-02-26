@@ -235,6 +235,25 @@
       "soft_skills": ["ReactionSpeed", "Focus", "Consistency"]
     },
     {
+      "id": 14,
+      "title": "Clusmy Bird",
+      "slug": "clumsy-bird",
+      "descriptions": "_{14_descriptions}",
+      "motivation": [
+        "_{14_motivation_1}",
+        "_{14_motivation_2}",
+        "_{14_motivation_3}",
+        "_{14_motivation_4}",
+        "_{14_motivation_5}"
+      ],
+      "image": "./games/clumsy-bird/images/clumsy-bird_banner.jpg",
+      "order": 14,
+      "tags": ["Puzzle", "Cognitive", "Strategy"],
+      "soft_skills": ["CognitiveAgility", "StrategicThinking", "Focus"],
+      "created_at": "2026-02-25T00:00:00Z",
+      "updated_at": "2026-02-25T00:00:00Z"
+    },
+{
       "id": 13,
       "title": "2048",
       "slug": "2048",
@@ -252,6 +271,63 @@
       "soft_skills": ["CognitiveAgility", "StrategicThinking", "Focus"],
       "created_at": "2026-02-25T00:00:00Z",
       "updated_at": "2026-02-25T00:00:00Z"
+    },
+{
+ "id": 15,
+      "title": "Tower Builder",
+      "slug": "tower-builder",
+      "descriptions": "_{15_descriptions}",
+      "motivation": [
+        "_{15_motivation_1}",
+        "_{15_motivation_2}",
+        "_{15_motivation_3}",
+        "_{15_motivation_4}",
+        "_{15_motivation_5}"
+      ],
+      "image": "./games/tower-builder/images/tower-builder_banner.jpg",
+      "order": 15,
+      "tags": ["Puzzle", "Cognitive", "Strategy"],
+      "soft_skills": ["CognitiveAgility", "StrategicThinking", "Focus"],
+      "created_at": "2026-02-25T00:00:00Z",
+      "updated_at": "2026-02-25T00:00:00Z"
+    },
+{
+ "id": 16,
+      "title": "Ancient Beast",
+      "slug": "ancient-beast",
+      "descriptions": "_{16_descriptions}",
+      "motivation": [
+        "_{16_motivation_1}",
+        "_{16_motivation_2}",
+        "_{16_motivation_3}",
+        "_{16_motivation_4}",
+        "_{16_motivation_5}"
+      ],
+      "image": "./assets/images/ancient-beast_banner.jpg",
+      "order": 16,
+      "tags": ["Puzzle", "Cognitive", "Strategy"],
+      "soft_skills": ["CognitiveAgility", "StrategicThinking", "Focus"],
+      "created_at": "2026-02-25T00:00:00Z",
+      "updated_at": "2026-02-25T00:00:00Z"
+    },
+{
+ "id": 17,
+      "title": "8ball",
+      "slug": "8ball",
+      "descriptions": "_{17_descriptions}",
+      "motivation": [
+        "_{17_motivation_1}",
+        "_{17_motivation_2}",
+        "_{17_motivation_3}",
+        "_{17_motivation_4}",
+        "_{17_motivation_5}"
+      ],
+      "image": "./assets/images/8ball_banner.jpg",
+      "order": 17,
+      "tags": ["Puzzle", "Cognitive", "Strategy"],
+      "soft_skills": ["CognitiveAgility", "StrategicThinking", "Focus"],
+      "created_at": "2026-02-25T00:00:00Z",
+      "updated_at": "2026-02-25T00:00:00Z"
     }
-  ]
+  ] 
 }
